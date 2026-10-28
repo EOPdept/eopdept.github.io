@@ -15,10 +15,10 @@ import {
 
 // Replace the placeholder values below with your own Firebase config.
 const firebaseConfig = {
-  apiKey: "PASTE_YOUR_API_KEY",
-  authDomain: "PASTE_YOUR_AUTH_DOMAIN",
-  projectId: "PASTE_YOUR_PROJECT_ID",
-  appId: "PASTE_YOUR_APP_ID"
+  apiKey: "AIzaSyCreHLfjPFC_LNaXS41qQHdF3XjXMOVcZg",
+  authDomain: "eoporganizationportal.firebaseapp.com",
+  projectId: "eoporganizationportal",
+  appId: "1:411434320038:web:c22752d2f9d19edbec3467"
 };
 
 const app = initializeApp(firebaseConfig);
