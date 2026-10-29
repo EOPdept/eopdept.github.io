@@ -46,6 +46,8 @@ loginForm.addEventListener("submit", async (event) => {
 
 onAuthStateChanged(auth, async (user) => {
   if (!user) {
+    document.getElementById("login-form").hidden = false;
+    document.getElementById("dashboard").hidden = true;
     loginMessage.textContent = "";
     return;
   }
