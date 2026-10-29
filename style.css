@@ -708,8 +708,8 @@ main:has(#login-form:not([hidden])) {
     min-width: 0;
     height: auto;
     min-height: 24vh;
-    font-size: 30vw;
-    transform: scaleY(1.2);
+    font-size: 24vw;
+    transform: none;
   }
 
   .portal-index {
