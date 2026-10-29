@@ -24,16 +24,46 @@
 <p id="login-message" role="status"></p>
     </form>
 
-<section id="dashboard" hidden>
-  <h2>Organization Dashboard</h2>
-  <p>Welcome to the EOP Organization Portal.</p>
 
-  <div class="dashboard-section">
+<section id="dashboard" hidden>
+  <div class="portal-layout">
+
+    <aside class="portal-index" aria-label="Portal index">
+      <a class="portal-index-brand" href="#dashboard-top">EOP</a>
+
+      <p class="portal-index-label">DEPARTMENT INDEX</p>
+
+      <nav class="portal-index-links" aria-label="Portal sections">
+        <a href="#dashboard-top">
+          <span>01</span> Overview
+        </a>
+        <a href="#patrol-section">
+          <span>02</span> ELT Patrol List
+        </a>
+        <a href="#meeting-section">
+          <span>03</span> Meeting Calendar
+        </a>
+        <a href="#documents-section">
+          <span>04</span> Docs &amp; Messages
+        </a>
+      </nav>
+
+      <div class="portal-index-footer">
+        ENGLISH ONLY<br />
+        DEPARTMENT
+      </div>
+    </aside>
+
+    <div class="portal-main">
+<h2 id="dashboard-top">Organization Dashboard</h2>
+    <p>Welcome to the EOP Organization Portal.</p>
+
+<div id="patrol-section" class="dashboard-section">
     <h3>ELT Patrol List</h3>
     <p id="patrol-content">No patrol information added yet.</p>
   </div>
 
-<div class="dashboard-section">
+<div id="meeting-section" class="dashboard-section">
   <h3>Meeting Calendar</h3>
 
   <div class="calendar-header">
@@ -63,7 +93,7 @@
   </p>
 </div>
 
-  <div class="dashboard-section">
+<div id="documents-section" class="dashboard-section">
     <h3>Docs &amp; Messages</h3>
     <p id="documents-content">No documents added yet.</p>
   </div>
@@ -93,6 +123,9 @@ Nov 19 — Committee Meeting"
 </div>
 
   <button id="logout-button" type="button">Sign out</button>
+
+    </div>
+  </div>
 </section>
     </form>
   </main>
