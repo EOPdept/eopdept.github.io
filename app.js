@@ -66,6 +66,22 @@ if (!user) {
 
     const role = memberSnap.data().role;
 
+const portalRef = doc(db, "portal", "content");
+const portalSnap = await getDoc(portalRef);
+
+if (portalSnap.exists()) {
+  const portalData = portalSnap.data();
+
+  document.getElementById("patrol-content").textContent =
+    portalData.patrol || "No patrol information added yet.";
+
+  document.getElementById("calendar-content").textContent =
+    portalData.calendar || "No meeting information added yet.";
+
+  document.getElementById("documents-content").textContent =
+    portalData.documents || "No documents added yet.";
+}
+
     loginMessage.textContent =
       role === "admin"
         ? "Signed in successfully. Administrator access confirmed."
