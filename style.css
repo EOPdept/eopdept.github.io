@@ -182,3 +182,16 @@ button:focus-visible {
   overflow-wrap: anywhere;
   color: #FFFFFF;
 }
+
+/* Improve text contrast on the cream login card */
+.login-container h1 {
+  color: #27121A;
+}
+
+.login-container > p {
+  color: #55434A;
+}
+
+.login-container form label {
+  color: #27121A;
+}
