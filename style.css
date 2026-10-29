@@ -643,3 +643,67 @@ main:has(#login-form:not([hidden])) {
   width: 100%;
   max-width: 480px;
 }
+
+/* Editorial login page */
+.login-container {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  align-items: center;
+  gap: 4%;
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
+  padding: 4vh 4%;
+  box-sizing: border-box;
+  background: #FDF8F3;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.login-panel {
+  width: 100%;
+  max-width: 400px;
+  justify-self: center;
+}
+
+.login-monogram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 88vh;
+  overflow: hidden;
+  color: #711B32;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(140px, 25vw, 420px);
+  font-weight: 400;
+  letter-spacing: -0.09em;
+  line-height: 0.8;
+  white-space: nowrap;
+  transform: scaleY(1.35);
+  transform-origin: center;
+}
+
+.login-container h1,
+.login-container p {
+  color: #27121A;
+}
+
+@media (max-width: 700px) {
+  .login-container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 32px 6%;
+  }
+
+  .login-panel {
+    max-width: 440px;
+  }
+
+  .login-monogram {
+    height: auto;
+    min-height: 24vh;
+    font-size: 30vw;
+    transform: scaleY(1.2);
+  }
+}
