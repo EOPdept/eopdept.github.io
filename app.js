@@ -65,7 +65,7 @@ if (!user) {
     }
 
     const role = memberSnap.data().role;
-alert("Current account role: " + role);
+
     const portalRef = doc(db, "portal", "content");
     const portalSnap = await getDoc(portalRef);
 
