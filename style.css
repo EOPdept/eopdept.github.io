@@ -740,3 +740,20 @@ body:has(#dashboard:not([hidden])) .login-container {
   max-width: 1400px;
   margin: 0 auto;
 }
+
+/* Index links: dark plum on a light background */
+.portal-index-links a,
+.portal-index-brand {
+  color: #27121A;
+  text-decoration: none;
+  border-color: #27121A;
+}
+
+.portal-index-links a span {
+  color: #27121A;
+}
+
+.portal-index-links a:hover,
+.portal-index-brand:hover {
+  color: #711B32;
+}
