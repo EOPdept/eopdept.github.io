@@ -691,9 +691,10 @@ main:has(#login-form:not([hidden])) {
   color: #27121A;
 }
 
+
 @media (max-width: 700px) {
   .login-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 24px;
     padding: 32px 6%;
   }
@@ -702,27 +703,30 @@ main:has(#login-form:not([hidden])) {
     max-width: 440px;
   }
 
-  
-.login-monogram {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  min-width: 0;
-  height: 88vh;
-  overflow: visible;
-  color: #711B32;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(120px, 22vw, 360px);
-  font-weight: 400;
-  letter-spacing: -0.11em;
-  line-height: 0.8;
-  white-space: nowrap;
-  transform: scaleY(1.35) scaleX(0.82);
-  transform-origin: center;
+  .login-monogram {
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    min-height: 24vh;
+    font-size: 30vw;
+    transform: scaleY(1.2);
+  }
+
+  .portal-index {
+    min-width: 0;
+    padding: 18px 12px;
+  }
+
+  .portal-index-links a {
+    white-space: nowrap;
+    font-size: 14px;
+  }
+
+  .portal-index-links {
+    gap: 14px;
+  }
 }
 
-}
 
 
 /* Hide the login layout after signing in */
@@ -765,4 +769,20 @@ body:has(#dashboard:not([hidden])) .login-container {
 
 .portal-index {
   min-width: max-content;
+}
+
+@media (max-width: 700px) {
+  .portal-index {
+    min-width: 0;
+    padding: 18px 12px;
+  }
+
+  .portal-index-links a {
+    white-space: nowrap;
+    font-size: 14px;
+  }
+
+  .portal-index-links {
+    gap: 14px;
+  }
 }
