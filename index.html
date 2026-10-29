@@ -21,7 +21,29 @@
              autocomplete="current-password" required>
 
       <button type="submit">Sign in</button>
-      <p id="login-message" role="status"></p>
+<p id="login-message" role="status"></p>
+
+<section id="dashboard" hidden>
+  <h2>Organization Dashboard</h2>
+  <p>Welcome to the EOP Organization Portal.</p>
+
+  <div class="dashboard-section">
+    <h3>ELT Patrol List</h3>
+    <p id="patrol-content">No patrol information added yet.</p>
+  </div>
+
+  <div class="dashboard-section">
+    <h3>Meeting Calendar</h3>
+    <p id="calendar-content">No meeting information added yet.</p>
+  </div>
+
+  <div class="dashboard-section">
+    <h3>Docs &amp; Messages</h3>
+    <p id="documents-content">No documents added yet.</p>
+  </div>
+
+  <button id="logout-button" type="button">Sign out</button>
+</section>
     </form>
   </main>
 
