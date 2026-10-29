@@ -3,17 +3,18 @@
   box-sizing: border-box;
 }
 
+
 body {
   margin: 0;
   min-height: 100vh;
   font-family: Arial, Helvetica, sans-serif;
   background: #FDF8F3;
-  color: #FFFFFF;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 24px;
+  color: #27121A;
+  display: block;
+  padding: 0;
+  box-sizing: border-box;
 }
+
 
 .login-container {
   width: 100%;
