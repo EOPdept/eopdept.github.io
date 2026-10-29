@@ -408,3 +408,55 @@ h1 {
   letter-spacing: 0.5px;
   font-weight: 600;
 }
+
+/* Subtle geometric pattern across the burgundy background */
+body {
+  background-color: #5A1025;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent 0 23px,
+      rgba(39, 18, 26, 0.32) 23px 24px,
+      transparent 24px 48px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0 23px,
+      rgba(39, 18, 26, 0.32) 23px 24px,
+      transparent 24px 48px
+    );
+  background-attachment: fixed;
+}
+
+/* Distinct month navigation header */
+.calendar-header {
+  background: #5A1025;
+  border: 1px solid #711B32;
+  border-radius: 5px;
+  padding: 12px 14px;
+  margin: 20px 0;
+}
+
+.calendar-header h4 {
+  color: #FDF8F3;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 21px;
+  font-weight: 400;
+}
+
+.calendar-header button {
+  background: transparent;
+  color: #FDF8F3;
+  border: 1px solid rgba(253, 248, 243, 0.45);
+  border-radius: 4px;
+}
+
+.calendar-header button:hover {
+  background: #711B32;
+  color: #FFFFFF;
+}
+
+.calendar-header button:focus-visible {
+  outline: 2px solid #FDF8F3;
+  outline-offset: 3px;
+}
