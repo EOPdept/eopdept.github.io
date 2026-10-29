@@ -409,21 +409,38 @@ h1 {
   font-weight: 600;
 }
 
-/* Subtle geometric pattern across the burgundy background */
+
+/* Subtle tonal plaid background */
 body {
   background-color: #5A1025;
   background-image:
     repeating-linear-gradient(
-      45deg,
-      transparent 0 23px,
-      rgba(39, 18, 26, 0.32) 23px 24px,
-      transparent 24px 48px
+      90deg,
+      transparent 0 18px,
+      rgba(39, 18, 26, 0.18) 18px 22px,
+      rgba(39, 18, 26, 0.30) 22px 30px,
+      rgba(39, 18, 26, 0.18) 30px 34px,
+      transparent 34px 56px
     ),
     repeating-linear-gradient(
-      -45deg,
-      transparent 0 23px,
-      rgba(39, 18, 26, 0.32) 23px 24px,
-      transparent 24px 48px
+      0deg,
+      transparent 0 18px,
+      rgba(39, 18, 26, 0.18) 18px 22px,
+      rgba(39, 18, 26, 0.30) 22px 30px,
+      rgba(39, 18, 26, 0.18) 30px 34px,
+      transparent 34px 56px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 54px,
+      rgba(253, 248, 243, 0.055) 54px 55px,
+      transparent 55px 112px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 54px,
+      rgba(253, 248, 243, 0.055) 54px 55px,
+      transparent 55px 112px
     );
   background-attachment: fixed;
 }
