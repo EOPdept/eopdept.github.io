@@ -66,21 +66,70 @@ if (!user) {
 
     const role = memberSnap.data().role;
 
-const portalRef = doc(db, "portal", "content");
-const portalSnap = await getDoc(portalRef);
+    const portalRef = doc(db, "portal", "content");
+    const portalSnap = await getDoc(portalRef);
 
-if (portalSnap.exists()) {
-  const portalData = portalSnap.data();
+    if (portalSnap.exists()) {
+      const portalData = portalSnap.data();
 
-  document.getElementById("patrol-content").textContent =
-    portalData.patrol || "No patrol information added yet.";
+      document.getElementById("patrol-content").textContent =
+        portalData.patrol || "No patrol information added yet.";
 
-  document.getElementById("calendar-content").textContent =
-    portalData.calendar || "No meeting information added yet.";
+      document.getElementById("calendar-content").textContent =
+        portalData.calendar || "No meeting information added yet.";
 
-  document.getElementById("documents-content").textContent =
-    portalData.documents || "No documents added yet.";
-}
+      document.getElementById("documents-content").textContent =
+        portalData.documents || "No documents added yet.";
+
+      if (role === "admin") {
+        document.getElementById("admin-editor").hidden = false;
+
+        document.getElementById("patrol-input").value =
+          portalData.patrol || "";
+
+        document.getElementById("calendar-input").value =
+          portalData.calendar || "";
+
+        document.getElementById("documents-input").value =
+          portalData.documents || "";
+                document.getElementById("save-portal-button").onclick =
+          async () => {
+            const saveMessage =
+              document.getElementById("save-message");
+
+            saveMessage.textContent = "Saving...";
+
+            try {
+              await updateDoc(portalRef, {
+                patrol:
+                  document.getElementById("patrol-input").value,
+                calendar:
+                  document.getElementById("calendar-input").value,
+                documents:
+                  document.getElementById("documents-input").value
+              });
+
+              document.getElementById("patrol-content").textContent =
+                document.getElementById("patrol-input").value ||
+                "No patrol information added yet.";
+
+              document.getElementById("calendar-content").textContent =
+                document.getElementById("calendar-input").value ||
+                "No meeting information added yet.";
+
+              document.getElementById("documents-content").textContent =
+                document.getElementById("documents-input").value ||
+                "No documents added yet.";
+
+              saveMessage.textContent = "Changes saved successfully.";
+            } catch (error) {
+              console.error("Error saving portal:", error);
+              saveMessage.textContent =
+                "Could not save changes. Please try again.";
+            }
+          };
+      }
+    }
 
     loginMessage.textContent =
       role === "admin"
