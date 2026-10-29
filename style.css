@@ -252,3 +252,110 @@ h1 {
   font-size: 21px;
   line-height: 1.35;
 }
+
+/* Monthly meeting calendar */
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.calendar-header h4 {
+  margin: 0;
+  color: #27121A;
+  font-size: 20px;
+  text-align: center;
+}
+
+.calendar-header button {
+  width: 42px;
+  min-width: 42px;
+  margin: 0;
+  padding: 10px;
+  background: #5A1025;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 6px;
+  margin: 16px 0 28px;
+}
+
+.calendar-weekday {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #55434A;
+  padding: 8px 0;
+}
+
+.calendar-day,
+.calendar-empty {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  margin: 0;
+  padding: 8px 0;
+  border-radius: 8px;
+}
+
+.calendar-day {
+  background: #FFFFFF;
+  color: #27121A;
+  border: 1px solid #E8DCD5;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.calendar-day:hover {
+  background: #F3E7EB;
+}
+
+.calendar-day.is-today {
+  border: 2px solid #711B32;
+  font-weight: 700;
+}
+
+.calendar-day.is-selected {
+  background: #5A1025;
+  color: #FFFFFF;
+  border-color: #5A1025;
+}
+
+.schedule-area {
+  border-top: 1px solid #E8DCD5;
+  padding-top: 18px;
+}
+
+.schedule-area h4 {
+  color: #5A1025;
+  font-size: 19px;
+  margin: 0 0 12px;
+}
+
+#schedule-list p {
+  color: #55434A;
+  line-height: 1.6;
+}
+
+@media (max-width: 480px) {
+  .calendar-grid {
+    gap: 3px;
+  }
+
+  .calendar-day,
+  .calendar-empty {
+    min-height: 38px;
+    padding: 6px 0;
+  }
+
+  .calendar-weekday {
+    font-size: 11px;
+  }
+}
