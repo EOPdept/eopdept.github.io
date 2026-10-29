@@ -7,7 +7,7 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: Arial, Helvetica, sans-serif;
-  background: #5A1025;
+  background: #FDF8F3;
   color: #FFFFFF;
   display: flex;
   justify-content: center;
@@ -411,12 +411,6 @@ h1 {
 
 
 
-/* Classic literary pattern for the burgundy background */
-body {
-  background-color: #5A1025;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cg fill='%23711B32' fill-opacity='.85' font-family='Georgia,serif' text-anchor='middle'%3E%3Ctext x='110' y='45' font-size='13' letter-spacing='3'%3EA %C2%B7 B %C2%B7 C%3C/text%3E%3Ctext x='110' y='105' font-size='30'%3E%E2%80%9C%E2%80%9D%3C/text%3E%3Ctext x='110' y='155' font-size='11' letter-spacing='4'%3EE O P%3C/text%3E%3C/g%3E%3Cg fill='none' stroke='%23711B32' stroke-width='1' stroke-opacity='.85'%3E%3Cpath d='M70 58 H150 M70 166 H150 M110 62 l4 4 -4 4 -4 -4 Z M110 170 l4 4 -4 4 -4 -4 Z M90 190 C80 180 72 190 82 196 C92 202 100 192 90 190 M130 190 C140 180 148 190 138 196 C128 202 120 192 130 190'/%3E%3C/g%3E%3C/svg%3E");
-  background-attachment: fixed;
-}
 
 
 /* Distinct month navigation header */
