@@ -18,12 +18,13 @@ body {
 
 .login-container {
   width: 100%;
-  max-width: 960px;
+  max-width: 1400px;
   background: #FDF8F3;
   padding: 40px;
   border: none;
   border-radius: 0;
   box-shadow: none;
+  box-sizing: border-box;
 }
 
 h1 {
@@ -618,6 +619,9 @@ main {
   width: 100%;
   max-width: none;
   margin: 0 auto;
-  padding: 32px 5%;
+  padding: 24px 2%;
   box-sizing: border-box;
+}
+#dashboard > .portal-layout .portal-main > p {
+  color: #27121A;
 }
