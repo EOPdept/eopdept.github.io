@@ -757,3 +757,12 @@ body:has(#dashboard:not([hidden])) .login-container {
 .portal-index-brand:hover {
   color: #711B32;
 }
+
+/* Keep Index link titles on one line */
+.portal-index-links a {
+  white-space: nowrap;
+}
+
+.portal-index {
+  min-width: max-content;
+}
