@@ -475,9 +475,10 @@ body {
 .portal-index-brand {
   color: #FDF8F3;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 38px;
-  line-height: 1;
-  letter-spacing: -1px;
+  font-size: 25px;
+  line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: 0;
   text-decoration: none;
 }
 
@@ -568,4 +569,29 @@ body {
   .portal-index-footer {
     display: none;
   }
+}
+/* Simpler, more understated index */
+.portal-index {
+  gap: 12px;
+  padding: 22px 18px;
+  border: none;
+  border-radius: 2px;
+}
+
+.portal-index-links a {
+  grid-template-columns: 20px minmax(0, 1fr);
+  gap: 4px;
+  padding: 10px 0;
+  font-size: 12px;
+  border-top: 1px solid rgba(253, 248, 243, 0.14);
+}
+
+.portal-index-links a span {
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.portal-index-links a:hover {
+  text-decoration: none;
+  color: #D8B8C2;
 }
