@@ -10,7 +10,8 @@ import {
 import {
   getFirestore,
   doc,
-  getDoc
+  getDoc,
+  updateDoc
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 // Replace the placeholder values below with your own Firebase config.
