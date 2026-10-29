@@ -589,3 +589,26 @@ h1 {
   text-decoration: none;
   color: #D8B8C2;
 }
+/* Flat, full-width cream page */
+main {
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  box-shadow: none;
+  border-radius: 0;
+}
+/* Use the available page width */
+#dashboard {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.portal-layout {
+  width: 100%;
+  box-sizing: border-box;
+  gap: 32px;
+}
+
+.portal-main {
+  min-width: 0;
+}
