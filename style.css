@@ -721,31 +721,4 @@ main:has(#login-form:not([hidden])) {
 }
 
 }
-/* Keep the login design separate from the dashboard */
-main.login-container:has(#dashboard:not([hidden])) {
-  display: block !important;
-  width: 100%;
-  max-width: none;
-  min-height: 0;
-  padding: 24px 2%;
-  box-sizing: border-box;
-}
 
-main.login-container:has(#dashboard:not([hidden])) > .login-panel,
-main.login-container:has(#dashboard:not([hidden])) > .login-monogram {
-  display: none !important;
-}
-
-main.login-container:has(#dashboard:not([hidden])) .portal-layout {
-  display: grid;
-  grid-template-columns: 190px minmax(0, 1fr);
-  gap: 28px;
-  align-items: start;
-}
-
-@media (max-width: 700px) {
-  main.login-container:has(#dashboard:not([hidden])) .portal-layout {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 20px;
-  }
-}
