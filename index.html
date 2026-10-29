@@ -101,15 +101,18 @@
   <label for="patrol-input">ELT Patrol List</label>
   <textarea id="patrol-input" rows="4"></textarea>
 
-  <label for="calendar-input">Meeting Calendar</label>
-    <textarea
-  id="calendar-input"
-  rows="6"
-  placeholder="Enter meetings one per line, for example:
-Nov 5 — EOP General Meeting
-Nov 12 — Project Planning
-Nov 19 — Committee Meeting"
-></textarea>
+  
+<label for="meeting-date-input">Meeting Date</label>
+<input id="meeting-date-input" type="date">
+
+<label for="meeting-title-input">Meeting Title</label>
+<input id="meeting-title-input" type="text"
+       placeholder="e.g. EOP General Meeting">
+
+<button id="add-meeting-button" type="button">Add Meeting</button>
+
+<div id="meeting-editor-list"></div>
+
  
 
   <label for="documents-input">Docs &amp; Messages</label>
