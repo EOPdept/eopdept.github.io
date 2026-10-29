@@ -147,3 +147,126 @@ if (!user) {
       "Could not verify your access. Please try again.";
   }
 });
+// Monthly calendar display and navigation
+(() => {
+  const grid = document.getElementById("calendar-grid");
+  const monthLabel = document.getElementById("calendar-month-label");
+  const prevButton = document.getElementById("prev-month");
+  const nextButton = document.getElementById("next-month");
+  const selectedLabel = document.getElementById("selected-date-label");
+  const scheduleList = document.getElementById("schedule-list");
+
+  if (
+    !grid ||
+    !monthLabel ||
+    !prevButton ||
+    !nextButton ||
+    !selectedLabel ||
+    !scheduleList
+  ) {
+    return;
+  }
+
+  let displayedMonth = new Date(
+    new Date().getFullYear(),
+    new Date().getMonth(),
+    1
+  );
+
+  let selectedDate = new Date();
+
+  function renderCalendar() {
+    const year = displayedMonth.getFullYear();
+    const month = displayedMonth.getMonth();
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    monthLabel.textContent = displayedMonth.toLocaleDateString("en-US", {
+      month: "long",
+      year: "numeric"
+    });
+
+    grid.replaceChildren();
+
+    ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].forEach(day => {
+      const heading = document.createElement("div");
+      heading.className = "calendar-weekday";
+      heading.textContent = day;
+      grid.appendChild(heading);
+    });
+
+    const totalCells = Math.ceil((firstDay + daysInMonth) / 7) * 7;
+
+    for (let i = 0; i < totalCells; i++) {
+      const dayNumber = i - firstDay + 1;
+
+      if (dayNumber < 1 || dayNumber > daysInMonth) {
+        const blank = document.createElement("div");
+        blank.className = "calendar-empty";
+        grid.appendChild(blank);
+        continue;
+      }
+
+      const date = new Date(year, month, dayNumber);
+      const button = document.createElement("button");
+
+      button.type = "button";
+      button.className = "calendar-day";
+      button.textContent = dayNumber;
+      button.setAttribute(
+        "aria-label",
+        date.toLocaleDateString("en-US", {
+          month: "long",
+          day: "numeric",
+          year: "numeric"
+        })
+      );
+
+      if (date.toDateString() === new Date().toDateString()) {
+        button.classList.add("is-today");
+      }
+
+      if (date.toDateString() === selectedDate.toDateString()) {
+        button.classList.add("is-selected");
+      }
+
+      button.addEventListener("click", () => {
+        selectedDate = date;
+        renderCalendar();
+      });
+
+      grid.appendChild(button);
+    }
+
+    selectedLabel.textContent = selectedDate.toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric"
+    });
+
+    scheduleList.textContent =
+      "No meetings have been added for this date yet.";
+  }
+
+  prevButton.addEventListener("click", () => {
+    displayedMonth = new Date(
+      displayedMonth.getFullYear(),
+      displayedMonth.getMonth() - 1,
+      1
+    );
+    selectedDate = new Date(displayedMonth);
+    renderCalendar();
+  });
+
+  nextButton.addEventListener("click", () => {
+    displayedMonth = new Date(
+      displayedMonth.getFullYear(),
+      displayedMonth.getMonth() + 1,
+      1
+    );
+    selectedDate = new Date(displayedMonth);
+    renderCalendar();
+  });
+
+  renderCalendar();
+})();
