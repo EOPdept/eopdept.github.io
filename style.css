@@ -625,3 +625,7 @@ main {
 #dashboard > .portal-layout .portal-main > p {
   color: #27121A;
 }
+/* Keep hidden sections hidden */
+[hidden] {
+  display: none !important;
+}
