@@ -18,9 +18,9 @@ body {
 .login-container {
   width: 100%;
   max-width: 960px;
-  background: #711B32;
+  background: #FDF8F3;
   padding: 40px;
-  border: 1px solid #8C4054;
+  border: 1px solid #E8DCD5;
   border-radius: 18px;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
 }
