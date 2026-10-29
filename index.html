@@ -33,10 +33,35 @@
     <p id="patrol-content">No patrol information added yet.</p>
   </div>
 
-  <div class="dashboard-section">
-    <h3>Meeting Calendar</h3>
-    <p id="calendar-content">No meeting information added yet.</p>
+<div class="dashboard-section">
+  <h3>Meeting Calendar</h3>
+
+  <div class="calendar-header">
+    <button type="button" id="prev-month" aria-label="Previous month">
+      &#8592;
+    </button>
+
+    <h4 id="calendar-month-label">Month Year</h4>
+
+    <button type="button" id="next-month" aria-label="Next month">
+      &#8594;
+    </button>
   </div>
+
+  <div id="calendar-grid" class="calendar-grid"></div>
+
+  <div class="schedule-area">
+    <h4 id="selected-date-label">Upcoming Schedule</h4>
+    <div id="schedule-list">
+      <p>Loading schedule...</p>
+    </div>
+  </div>
+
+  <!-- Kept temporarily for compatibility with the existing app.js -->
+  <p id="calendar-content" hidden>
+    No meeting information added yet.
+  </p>
+</div>
 
   <div class="dashboard-section">
     <h3>Docs &amp; Messages</h3>
