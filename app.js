@@ -62,11 +62,18 @@ onAuthStateChanged(auth, async (user) => {
     }
 
     const role = memberSnap.data().role;
+
     loginMessage.textContent =
       role === "admin"
         ? "Signed in successfully. Administrator access confirmed."
         : "Signed in successfully. Member access confirmed.";
 
+    document.getElementById("login-form").hidden = true;
+    document.getElementById("dashboard").hidden = false;
+
+    document.getElementById("logout-button").onclick = async () => {
+      await signOut(auth);
+    };
     // We'll add the dashboard here in the next step.
   } catch (error) {
     loginMessage.textContent =
