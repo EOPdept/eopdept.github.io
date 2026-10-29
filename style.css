@@ -451,3 +451,121 @@ body {
   outline: 2px solid #FDF8F3;
   outline-offset: 3px;
 }
+
+/* EOP dictionary-style index layout */
+.portal-layout {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.portal-index {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+  padding: 24px 16px;
+  background: #711B32;
+  color: #FDF8F3;
+  border: 1px solid #8C4054;
+  border-radius: 4px;
+}
+
+.portal-index-brand {
+  color: #FDF8F3;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 38px;
+  line-height: 1;
+  letter-spacing: -1px;
+  text-decoration: none;
+}
+
+.portal-index-label {
+  margin: 0;
+  color: #D8B8C2;
+  font-size: 10px;
+  line-height: 1.6;
+  letter-spacing: 1.4px;
+}
+
+.portal-index-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.portal-index-links a {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: 6px;
+  align-items: baseline;
+  padding: 12px 0;
+  border-top: 1px solid rgba(253, 248, 243, 0.18);
+  color: #FDF8F3;
+  font-size: 12px;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.portal-index-links a span {
+  color: #D8B8C2;
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+}
+
+.portal-index-links a:hover {
+  color: #FFFFFF;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.portal-index-footer {
+  margin-top: 12px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(253, 248, 243, 0.3);
+  color: #D8B8C2;
+  font-size: 9px;
+  line-height: 1.8;
+  letter-spacing: 1.5px;
+}
+
+.portal-main {
+  min-width: 0;
+}
+
+.portal-main #dashboard-top {
+  margin-top: 0;
+}
+
+#patrol-section,
+#meeting-section,
+#documents-section {
+  scroll-margin-top: 20px;
+}
+
+/* Responsive layout */
+@media (max-width: 700px) {
+  .portal-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .portal-index {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .portal-index-brand {
+    font-size: 30px;
+  }
+
+  .portal-index-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 16px;
+  }
+
+  .portal-index-footer {
+    display: none;
+  }
+}
