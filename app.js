@@ -45,12 +45,12 @@ loginForm.addEventListener("submit", async (event) => {
 });
 
 onAuthStateChanged(auth, async (user) => {
-  if (!user) {
-    document.getElementById("login-form").hidden = false;
-    document.getElementById("dashboard").hidden = true;
-    loginMessage.textContent = "";
-    return;
-  }
+if (!user) {
+  document.getElementById("login-form").hidden = false;
+  document.getElementById("dashboard").hidden = true;
+  loginMessage.textContent = "";
+  return;
+}
 
   try {
     const memberRef = doc(db, "members", user.uid);
@@ -76,7 +76,6 @@ onAuthStateChanged(auth, async (user) => {
     document.getElementById("logout-button").onclick = async () => {
       await signOut(auth);
     };
-    // We'll add the dashboard here in the next step.
   } catch (error) {
     loginMessage.textContent =
       "Could not verify your access. Please try again.";
