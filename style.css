@@ -721,3 +721,14 @@ main:has(#login-form:not([hidden])) {
 }
 
 }
+/* Restore the normal dashboard after login */
+main.login-container:has(#dashboard:not([hidden])) {
+  display: block;
+  min-height: 0;
+  padding: 24px 2%;
+}
+
+main.login-container:has(#dashboard:not([hidden])) .login-panel,
+main.login-container:has(#dashboard:not([hidden])) .login-monogram {
+  display: none;
+}
