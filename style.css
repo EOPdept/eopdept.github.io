@@ -703,13 +703,8 @@ main:has(#login-form:not([hidden])) {
     max-width: 440px;
   }
 
-  .login-monogram {
-    width: 100%;
-    min-width: 0;
-    height: auto;
-    min-height: 24vh;
-    font-size: 24vw;
-    transform: none;
+    .login-monogram {
+    display: none !important;
   }
 
   .portal-index {
