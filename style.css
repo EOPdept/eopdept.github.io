@@ -722,3 +722,8 @@ main:has(#login-form:not([hidden])) {
 
 }
 
+
+/* Hide the login layout after signing in */
+body:has(#dashboard:not([hidden])) .login-container {
+  display: none !important;
+}
