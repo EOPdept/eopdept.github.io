@@ -227,3 +227,28 @@ button:focus-visible {
   line-height: 1.7;
   overflow-wrap: anywhere;
 }
+
+/* Editorial typography for headings */
+h1,
+h2,
+h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: -0.4px;
+}
+
+h1 {
+  font-size: 32px;
+  line-height: 1.2;
+}
+
+#dashboard h2 {
+  font-size: 30px;
+  line-height: 1.25;
+}
+
+.dashboard-section h3,
+#admin-editor h3 {
+  font-size: 21px;
+  line-height: 1.35;
+}
