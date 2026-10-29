@@ -456,17 +456,19 @@ h1 {
   align-items: start;
 }
 
+
 .portal-index {
   display: flex;
   flex-direction: column;
   gap: 18px;
   min-width: 0;
   padding: 24px 16px;
-  background: #711B32;
-  color: #FDF8F3;
-  border: 1px solid #8C4054;
-  border-radius: 4px;
+  background: transparent;
+  color: #27121A;
+  border: 1px solid #27121A;
+  border-radius: 0;
 }
+
 
 .portal-index-brand {
   color: #FDF8F3;
@@ -726,4 +728,15 @@ main:has(#login-form:not([hidden])) {
 /* Hide the login layout after signing in */
 body:has(#dashboard:not([hidden])) .login-container {
   display: none !important;
+}
+
+/* Give the dashboard room around the edges */
+#dashboard {
+  padding: 32px 4%;
+  box-sizing: border-box;
+}
+
+.portal-layout {
+  max-width: 1400px;
+  margin: 0 auto;
 }
