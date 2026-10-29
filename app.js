@@ -81,7 +81,9 @@ alert("Current account role: " + role);
       document.getElementById("documents-content").textContent =
         portalData.documents || "No documents added yet.";
 
-      if (role === "admin") {
+      document.getElementById("admin-editor").hidden = role !== "admin";
+
+if (role === "admin") {
         document.getElementById("admin-editor").hidden = false;
 
         document.getElementById("patrol-input").value =
