@@ -629,3 +629,17 @@ main {
 [hidden] {
   display: none !important;
 }
+/* Center the login page */
+main:has(#login-form:not([hidden])) {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 2%;
+  box-sizing: border-box;
+}
+
+#login-form {
+  width: 100%;
+  max-width: 480px;
+}
