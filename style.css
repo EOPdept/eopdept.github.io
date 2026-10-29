@@ -195,3 +195,12 @@ button:focus-visible {
 .login-container form label {
   color: #27121A;
 }
+
+/* Dashboard text on the cream background */
+#dashboard h2 {
+  color: #27121A;
+}
+
+#dashboard > p {
+  color: #55434A;
+}
