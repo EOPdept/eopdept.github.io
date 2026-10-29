@@ -703,9 +703,20 @@ main:has(#login-form:not([hidden])) {
     max-width: 440px;
   }
 
-    .login-monogram {
-    display: none !important;
-  }
+    
+.login-monogram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+  height: auto;
+  min-height: 24vh;
+  font-size: 24vw;
+  line-height: 1;
+  transform: none;
+}
+
 
   .portal-index {
     min-width: 0;
