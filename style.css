@@ -144,6 +144,7 @@ label {
 input {
   display: block;
   width: 100%;
+  box-sizing: border-box;
   padding: 13px 14px;
   background: #FFFFFF;
   color: #27121A;
