@@ -1002,3 +1002,12 @@ font-family: Georgia, "Noto Sans KR", serif;
   width: fit-content;
 flex-shrink: 0;
 }
+#meeting-date-input {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 10px 6px;
+  font-size: 14px;
+}
