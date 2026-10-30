@@ -873,7 +873,7 @@ justify-self: end;
   border: 1px solid rgba(155, 124, 131, 0.25);
   vertical-align: middle;
   text-align: center;
-font-family: "Noto Sans KR", sans-serif;
+font-family: Georgia, "Noto Sans KR", serif;
 }
 
 /* Border between columns 1 and 2 */
