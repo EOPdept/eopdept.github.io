@@ -182,7 +182,16 @@
 
       <div id="documents-section" class="dashboard-section">
   <h3>Docs &amp; Messages</h3>
-  <p id="documents-content">No documents added yet.</p>
+
+  <h4>Notes &amp; Messages</h4>
+  <div id="notes-list">
+    <p>No notes added yet.</p>
+  </div>
+
+  <h4>Documents</h4>
+  <div id="documents-list">
+    <p>No documents uploaded yet.</p>
+  </div>
 </div>
       
 <div id="meeting-section" class="dashboard-section">
@@ -232,8 +241,28 @@
 
  
 
-  <label for="documents-input">Docs &amp; Messages</label>
- <textarea id="documents-input" rows="4"></textarea>
+  <h4>Add a Note or Message</h4>
+<label for="note-title-input">Note Title</label>
+<input id="note-title-input" type="text" placeholder="e.g. Weekly Announcement">
+
+<label for="note-content-input">Note Content</label>
+<textarea id="note-content-input" rows="4"></textarea>
+<button id="add-note-button" type="button">Add Note</button>
+
+<div id="notes-editor-list"></div>
+
+<hr>
+
+<h4>Add a Document</h4>
+<label for="document-title-input">Document Title</label>
+<input id="document-title-input" type="text" placeholder="e.g. EOP Handbook">
+
+<label for="document-link-input">Google Drive Link</label>
+<input id="document-link-input" type="url" placeholder="Paste the sharing link">
+
+<button id="add-document-button" type="button">Add Document</button>
+
+<div id="documents-editor-list"></div>
 
   <button id="save-portal-button" type="button">Save Changes</button>
   <p id="save-message" role="status"></p>
