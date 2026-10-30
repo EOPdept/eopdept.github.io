@@ -869,7 +869,7 @@ justify-self: end;
 .patrol-table td {
   height: 48px;
   padding: 8px 12px;
-  border: 1px solid rgba(155, 124, 131, 0.25);
+  border: 1px solid rgba(155, 124, 131, 0.15);
   vertical-align: middle;
   text-align: center;
 font-family: Georgia, "Noto Sans KR", serif;
@@ -877,7 +877,7 @@ font-family: Georgia, "Noto Sans KR", serif;
 
 /* Border between columns 1 and 2 */
 .patrol-table td:first-child {
-  border-right: 1px solid #9B7C83;
+ border-right: 1px solid #76545D;
 }
 
 /* Borders between rows 1–2, 4–5, 5–6, and 8–9 */
@@ -885,7 +885,7 @@ font-family: Georgia, "Noto Sans KR", serif;
 .patrol-table tr:nth-child(4) td,
 .patrol-table tr:nth-child(5) td,
 .patrol-table tr:nth-child(8) td {
-  border-bottom: 1px solid #9B7C83;
+  border-bottom: 1px solid #76545D;
 }
 
 /* Extra borders in rows 5 and 9 */
@@ -893,7 +893,7 @@ font-family: Georgia, "Noto Sans KR", serif;
 .patrol-table tr:nth-child(5) td:nth-child(3),
 .patrol-table tr:nth-child(9) td:nth-child(2),
 .patrol-table tr:nth-child(9) td:nth-child(3) {
-  border-right: 1px solid #9B7C83;
+  border-right: 1px solid #76545D;
 }
 .patrol-table td[colspan="3"] {
   background-color: #711B32;
