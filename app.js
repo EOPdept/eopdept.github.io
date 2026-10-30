@@ -280,9 +280,8 @@ function renderMeetingEditor() {
   list.replaceChildren();
 
   if (meetings.length === 0) {
-    list.textContent = "No meetings added yet.";
-    return;
-  }
+  return;
+}
 
   meetings.forEach((meeting, index) => {
     const item = document.createElement("div");
