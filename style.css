@@ -1033,3 +1033,21 @@ flex-shrink: 0;
 #notes-list p {
   white-space: pre-wrap;
 }
+.notes-editor-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.notes-editor-actions button {
+  width: fit-content;
+  padding: 4px 8px;
+  margin: 0;
+  line-height: 1.2;
+  flex-shrink: 0;
+}
+
+.notes-editor-actions button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
