@@ -141,45 +141,7 @@ if (role === "admin") {
 
 
         
-                document.getElementById("save-portal-button").onclick =
-          async () => {
-            const saveMessage =
-              document.getElementById("save-message");
-
-            saveMessage.textContent = "Saving...";
-
-            try {
-              const tableData = Array.from(
-  document.querySelectorAll(".patrol-table"),
-  (table) => {
-    const cells = {};
-
-    table.querySelectorAll("td[data-cell]").forEach((cell) => {
-      cells[cell.dataset.cell] = cell.textContent.trim();
-    });
-
-    return cells;
-  }
-);
-              await updateDoc(portalRef, {
-  patrolTables: tableData,
-meetings: meetings,
-notes: notes,
-documents: documents
-});
-
-
-
-            
-              
-
-              saveMessage.textContent = "Changes saved successfully.";
-            } catch (error) {
-              console.error("Error saving portal:", error);
-              saveMessage.textContent =
-                "Could not save changes. Please try again.";
-            }
-          };
+                
       }
     }
 
