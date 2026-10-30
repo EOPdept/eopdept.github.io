@@ -961,7 +961,9 @@ font-family: Georgia, "Noto Sans KR", serif;
 #meeting-editor-list {
   margin-top: 12px;
 }
-#add-meeting-button {
+#add-meeting-button,
+#add-note-button,
+#add-document-button {
   margin-bottom: 28px;
 }
 #notes-list > div,
