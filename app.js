@@ -50,12 +50,15 @@ loginMessage.style.color = "#711B32";
 });
 
 onAuthStateChanged(auth, async (user) => {
+    document.getElementById("loading-message").hidden = false;
     document.getElementById("login-form").hidden = true;
   document.getElementById("dashboard").hidden = true;
 if (!user) {
   document.getElementById("login-form").hidden = false;
+  document.getElementById("loading-message").hidden = true;
   document.getElementById("dashboard").hidden = true;
   loginMessage.textContent = "";
+    document.getElementById("loading-message").hidden = true;
   return;
 }
 
