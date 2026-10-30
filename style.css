@@ -1030,3 +1030,6 @@ flex-shrink: 0;
     display: none;
   }
 }
+#notes-list p {
+  white-space: pre-wrap;
+}
