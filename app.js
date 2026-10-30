@@ -172,8 +172,17 @@ function renderMeetingEditor() {
     const item = document.createElement("div");
     item.className = "meeting-editor-item";
 
-    const details = document.createElement("span");
-    details.textContent = meeting.date + " — " + meeting.title;
+    const details = document.createElement("div");
+details.className = "meeting-editor-details";
+
+const title = document.createElement("strong");
+title.textContent = meeting.title;
+
+const date = document.createElement("small");
+date.textContent = meeting.date;
+
+details.appendChild(title);
+details.appendChild(date);
 
     const removeButton = document.createElement("button");
     removeButton.type = "button";
