@@ -264,12 +264,13 @@ function renderDocuments() {
   const list = document.getElementById("documents-list");
   const editorList = document.getElementById("documents-editor-list");
 
+  if (documentsSortable) {
+    documentsSortable.destroy();
+    documentsSortable = null;
+  }
+
   list.replaceChildren();
   editorList.replaceChildren();
-
-  if (documents.length === 0) {
-    return;
-  }
 
   documents.forEach((documentItem, index) => {
     const link = document.createElement("a");
@@ -288,27 +289,66 @@ function renderDocuments() {
     const editorTitle = document.createElement("span");
     editorTitle.textContent = documentItem.title;
 
+    const actions = document.createElement("div");
+    actions.className = "notes-editor-actions";
+
+    const dragHandle = document.createElement("span");
+    dragHandle.className = "documents-drag-handle";
+    dragHandle.textContent = "⠿";
+    dragHandle.title = "Hold and drag to reorder";
+
     const removeButton = document.createElement("button");
     removeButton.type = "button";
     removeButton.textContent = "Remove";
 
     removeButton.addEventListener("click", async () => {
-  const removedDocument = documents.splice(index, 1)[0];
+      const removedDocument = documents.splice(index, 1)[0];
 
-  try {
-    await updateDoc(portalRef, { documents: documents });
-    renderDocuments();
-  } catch (error) {
-    documents.splice(index, 0, removedDocument);
-    renderDocuments();
-    console.error("Error removing document:", error);
-    alert("Could not remove the document. Please try again.");
-  }
-});
+      try {
+        await updateDoc(portalRef, { documents: documents });
+        renderDocuments();
+      } catch (error) {
+        documents.splice(index, 0, removedDocument);
+        renderDocuments();
+        console.error("Error removing document:", error);
+        alert("Could not remove the document. Please try again.");
+      }
+    });
+
+    actions.appendChild(dragHandle);
+    actions.appendChild(removeButton);
 
     editorItem.appendChild(editorTitle);
-    editorItem.appendChild(removeButton);
+    editorItem.appendChild(actions);
     editorList.appendChild(editorItem);
+  });
+
+  documentsSortable = Sortable.create(editorList, {
+    animation: 150,
+    handle: ".documents-drag-handle",
+    delay: 180,
+    delayOnTouchOnly: true,
+    touchStartThreshold: 5,
+
+    onEnd: async (event) => {
+      if (event.oldIndex === event.newIndex) {
+        return;
+      }
+
+      const previousDocuments = [...documents];
+
+      const movedDocument = documents.splice(event.oldIndex, 1)[0];
+      documents.splice(event.newIndex, 0, movedDocument);
+
+      try {
+        await updateDoc(portalRef, { documents: documents });
+        renderDocuments();
+      } catch (error) {
+        documents.splice(0, documents.length, ...previousDocuments);
+        renderDocuments();
+        alert("Could not reorder documents. Please try again.");
+      }
+    }
   });
 }
 
@@ -464,6 +504,7 @@ let notes = [];
 let documents = [];
 let portalRef = null;
 let notesSortable = null;
+let documentsSortable = null;
 
 // Monthly calendar display and navigation
 (() => {
