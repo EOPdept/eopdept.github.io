@@ -1025,3 +1025,8 @@ flex-shrink: 0;
     width: 95%;
   }
 }
+@media (max-width: 600px) {
+  .login-monogram {
+    display: none;
+  }
+}
