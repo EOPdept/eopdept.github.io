@@ -54,6 +54,7 @@ if (!user) {
 }
 
   try {
+    console.log("Signed-in user:", user.uid);
     const memberRef = doc(db, "members", user.uid);
     const memberSnap = await getDoc(memberRef);
 
