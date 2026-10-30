@@ -14,6 +14,7 @@ import {
   updateDoc
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
+
 // Replace the placeholder values below with your own Firebase config.
 const firebaseConfig = {
   apiKey: "AIzaSyCreHLfjPFC_LNaXS41qQHdF3XjXMOVcZg",
@@ -25,6 +26,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+
 
 const loginForm = document.getElementById("login-form");
 const loginMessage = document.getElementById("login-message");
