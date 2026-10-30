@@ -1064,3 +1064,8 @@ flex-shrink: 0;
 .notes-drag-handle:active {
   cursor: grabbing;
 }
+@media (max-width: 600px) {
+  .patrol-table td:first-child {
+    width: 32%;
+  }
+}
