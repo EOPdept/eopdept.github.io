@@ -227,6 +227,7 @@ function renderNotes() {
 function renderDocuments() {
   const list = document.getElementById("documents-list");
   const editorList = document.getElementById("documents-editor-list");
+  editorItem.className = "meeting-editor-item";
 
   list.replaceChildren();
   editorList.replaceChildren();
