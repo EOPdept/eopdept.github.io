@@ -14,6 +14,7 @@ import {
   updateDoc
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
+import Sortable from "https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/modular/sortable.core.esm.js";
 
 // Replace the placeholder values below with your own Firebase config.
 const firebaseConfig = {
@@ -171,12 +172,13 @@ function renderNotes() {
   const list = document.getElementById("notes-list");
   const editorList = document.getElementById("notes-editor-list");
 
+  if (notesSortable) {
+    notesSortable.destroy();
+    notesSortable = null;
+  }
+
   list.replaceChildren();
   editorList.replaceChildren();
-
-  if (notes.length === 0) {
-    return;
-  }
 
   notes.forEach((note, index) => {
     const item = document.createElement("div");
@@ -200,45 +202,10 @@ function renderNotes() {
     const actions = document.createElement("div");
     actions.className = "notes-editor-actions";
 
-    const upButton = document.createElement("button");
-    upButton.type = "button";
-    upButton.textContent = "↑";
-    upButton.disabled = index === 0;
-
-    upButton.addEventListener("click", async () => {
-      [notes[index - 1], notes[index]] =
-        [notes[index], notes[index - 1]];
-
-      try {
-        await updateDoc(portalRef, { notes: notes });
-        renderNotes();
-      } catch (error) {
-        [notes[index - 1], notes[index]] =
-          [notes[index], notes[index - 1]];
-        renderNotes();
-        alert("Could not reorder notes. Please try again.");
-      }
-    });
-
-    const downButton = document.createElement("button");
-    downButton.type = "button";
-    downButton.textContent = "↓";
-    downButton.disabled = index === notes.length - 1;
-
-    downButton.addEventListener("click", async () => {
-      [notes[index], notes[index + 1]] =
-        [notes[index + 1], notes[index]];
-
-      try {
-        await updateDoc(portalRef, { notes: notes });
-        renderNotes();
-      } catch (error) {
-        [notes[index], notes[index + 1]] =
-          [notes[index + 1], notes[index]];
-        renderNotes();
-        alert("Could not reorder notes. Please try again.");
-      }
-    });
+    const dragHandle = document.createElement("span");
+    dragHandle.className = "notes-drag-handle";
+    dragHandle.textContent = "⠿";
+    dragHandle.title = "Hold and drag to reorder";
 
     const removeButton = document.createElement("button");
     removeButton.type = "button";
@@ -257,13 +224,39 @@ function renderNotes() {
       }
     });
 
-    actions.appendChild(upButton);
-    actions.appendChild(downButton);
+    actions.appendChild(dragHandle);
     actions.appendChild(removeButton);
 
     editorItem.appendChild(editorTitle);
     editorItem.appendChild(actions);
     editorList.appendChild(editorItem);
+  });
+
+  notesSortable = Sortable.create(editorList, {
+    animation: 150,
+    handle: ".notes-drag-handle",
+    delay: 180,
+    delayOnTouchOnly: true,
+    touchStartThreshold: 5,
+
+    onEnd: async (event) => {
+      if (event.oldIndex === event.newIndex) {
+        return;
+      }
+
+      const previousNotes = [...notes];
+
+      const movedNote = notes.splice(event.oldIndex, 1)[0];
+      notes.splice(event.newIndex, 0, movedNote);
+
+      try {
+        await updateDoc(portalRef, { notes: notes });
+      } catch (error) {
+        notes.splice(0, notes.length, ...previousNotes);
+        renderNotes();
+        alert("Could not reorder notes. Please try again.");
+      }
+    }
   });
 }
 
@@ -470,6 +463,7 @@ let meetings = [];
 let notes = [];
 let documents = [];
 let portalRef = null;
+let notesSortable = null;
 
 // Monthly calendar display and navigation
 (() => {
