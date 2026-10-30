@@ -894,3 +894,7 @@ justify-self: end;
 .patrol-table tr:nth-child(9) td:nth-child(3) {
   border-right: 1px solid #9B7C83;
 }
+.patrol-table td[colspan="3"] {
+  background-color: #711B32;
+  color: #FFFFFF;
+}
