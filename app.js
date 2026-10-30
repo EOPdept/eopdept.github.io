@@ -109,8 +109,9 @@ if (role === "admin") {
        
 
 
-        document.getElementById("documents-input").value =
-  portalData.documents || "";
+        const documentsInput = document.getElementById("documents-input");
+console.log("Documents input element:", documentsInput);
+documentsInput.value = portalData.documents || "";
                 document.getElementById("save-portal-button").onclick =
           async () => {
             const saveMessage =
