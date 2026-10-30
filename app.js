@@ -150,10 +150,13 @@ if (role === "admin") {
       await signOut(auth);
     };
 } catch (error) {
-    console.error("Access verification error:", error);
+  console.error("Access verification error:", error);
 
-    loginMessage.textContent =
-      "Could not verify your access. Please try again.";
+  loginMessage.textContent =
+    "Verification error: " +
+    (error.code || "unknown") +
+    " — " +
+    (error.message || String(error));
 }
 });
 // Monthly calendar display and navigation
