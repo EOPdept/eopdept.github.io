@@ -1051,3 +1051,15 @@ flex-shrink: 0;
   opacity: 0.35;
   cursor: default;
 }
+.notes-drag-handle {
+  cursor: grab;
+  font-size: 22px;
+  color: #711B32;
+  padding: 4px 6px;
+  user-select: none;
+  touch-action: none;
+}
+
+.notes-drag-handle:active {
+  cursor: grabbing;
+}
