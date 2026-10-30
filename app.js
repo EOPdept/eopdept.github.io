@@ -92,18 +92,14 @@ meetings = portalData.meetings || [];
 window.renderCalendar();
 
 if (role === "admin") {
+  document.getElementById("admin-editor").hidden = false;
   renderMeetingEditor();
-        document.getElementById("admin-editor").hidden = false;
-  renderMeetingEditor();
-
         document.getElementById("patrol-input").value =
           portalData.patrol || "";
 
 
         document.getElementById("documents-input").value =
-          portalData.documents || "";
-renderMeetingEditor();
-renderCalendar();
+  portalData.documents || "";
                 document.getElementById("save-portal-button").onclick =
           async () => {
             const saveMessage =
@@ -186,7 +182,7 @@ function renderMeetingEditor() {
     removeButton.addEventListener("click", () => {
       meetings.splice(index, 1);
       renderMeetingEditor();
-      renderCalendar();
+      window.renderCalendar();
     });
 
     item.appendChild(details);
@@ -216,10 +212,11 @@ document.getElementById("add-meeting-button").addEventListener("click", () => {
   titleInput.value = "";
 
   renderMeetingEditor();
-  renderCalendar();
+  window.renderCalendar();
 });
 
 let meetings = [];
+
 // Monthly calendar display and navigation
 (() => {
   const grid = document.getElementById("calendar-grid");
@@ -230,12 +227,8 @@ let meetings = [];
   const scheduleList = document.getElementById("schedule-list");
 
   if (
-    !grid ||
-    !monthLabel ||
-    !prevButton ||
-    !nextButton ||
-    !selectedLabel ||
-    !scheduleList
+    !grid || !monthLabel || !prevButton ||
+    !nextButton || !selectedLabel || !scheduleList
   ) {
     return;
   }
@@ -248,8 +241,6 @@ let meetings = [];
 
   let selectedDate = new Date();
 
-  window.renderCalendar = function() {
-    
   function renderCalendar() {
     const year = displayedMonth.getFullYear();
     const month = displayedMonth.getMonth();
@@ -288,14 +279,6 @@ let meetings = [];
       button.type = "button";
       button.className = "calendar-day";
       button.textContent = dayNumber;
-      button.setAttribute(
-        "aria-label",
-        date.toLocaleDateString("en-US", {
-          month: "long",
-          day: "numeric",
-          year: "numeric"
-        })
-      );
 
       if (date.toDateString() === new Date().toDateString()) {
         button.classList.add("is-today");
@@ -306,13 +289,13 @@ let meetings = [];
       }
 
       const dateString =
-  date.getFullYear() + "-" +
-  String(date.getMonth() + 1).padStart(2, "0") + "-" +
-  String(date.getDate()).padStart(2, "0");
+        date.getFullYear() + "-" +
+        String(date.getMonth() + 1).padStart(2, "0") + "-" +
+        String(date.getDate()).padStart(2, "0");
 
-if (meetings.some(meeting => meeting.date === dateString)) {
-  button.classList.add("has-meeting");
-}
+      if (meetings.some(meeting => meeting.date === dateString)) {
+        button.classList.add("has-meeting");
+      }
 
       button.addEventListener("click", () => {
         selectedDate = date;
@@ -328,30 +311,30 @@ if (meetings.some(meeting => meeting.date === dateString)) {
       year: "numeric"
     });
 
-    
-const selectedDateString =
-  selectedDate.getFullYear() + "-" +
-  String(selectedDate.getMonth() + 1).padStart(2, "0") + "-" +
-  String(selectedDate.getDate()).padStart(2, "0");
+    const selectedDateString =
+      selectedDate.getFullYear() + "-" +
+      String(selectedDate.getMonth() + 1).padStart(2, "0") + "-" +
+      String(selectedDate.getDate()).padStart(2, "0");
 
-const selectedMeetings = meetings.filter(
-  meeting => meeting.date === selectedDateString
-);
+    const selectedMeetings = meetings.filter(
+      meeting => meeting.date === selectedDateString
+    );
 
-scheduleList.replaceChildren();
+    scheduleList.replaceChildren();
 
-if (selectedMeetings.length === 0) {
-  scheduleList.textContent =
-    "No meetings have been added for this date yet.";
-} else {
-  selectedMeetings.forEach(meeting => {
-    const item = document.createElement("p");
-    item.textContent = meeting.title;
-    scheduleList.appendChild(item);
-  });
-}
+    if (selectedMeetings.length === 0) {
+      scheduleList.textContent =
+        "No meetings have been added for this date yet.";
+    } else {
+      selectedMeetings.forEach(meeting => {
+        const item = document.createElement("p");
+        item.textContent = meeting.title;
+        scheduleList.appendChild(item);
+      });
+    }
+  }
 
-  };
+  window.renderCalendar = renderCalendar;
 
   prevButton.addEventListener("click", () => {
     displayedMonth = new Date(
@@ -360,7 +343,7 @@ if (selectedMeetings.length === 0) {
       1
     );
     selectedDate = new Date(displayedMonth);
-    window.renderCalendar();
+    renderCalendar();
   });
 
   nextButton.addEventListener("click", () => {
