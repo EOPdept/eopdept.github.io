@@ -74,11 +74,36 @@ console.log("Member document retrieved:", memberSnap.exists());
 
     const role = memberSnap.data().role;
 
-    document.querySelectorAll(".patrol-table td").forEach((cell) => {
+document.querySelectorAll(".patrol-table td").forEach((cell) => {
   cell.contentEditable = role === "admin";
   cell.setAttribute("spellcheck", "false");
-});
 
+  if (role === "admin" && cell.hasAttribute("data-cell")) {
+    cell.addEventListener("blur", async () => {
+      const tableData = Array.from(
+        document.querySelectorAll(".patrol-table"),
+        (table) => {
+          const cells = {};
+
+          table.querySelectorAll("td[data-cell]").forEach((cell) => {
+            cells[cell.dataset.cell] = cell.textContent.trim();
+          });
+
+          return cells;
+        }
+      );
+
+      try {
+        await updateDoc(portalRef, {
+          patrolTables: tableData
+        });
+      } catch (error) {
+        console.error("Error saving patrol tables:", error);
+        alert("Could not save the patrol table. Please try again.");
+      }
+    });
+  }
+});
     portalRef = doc(db, "portal", "content");
     const portalSnap = await getDoc(portalRef);
 
