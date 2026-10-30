@@ -982,3 +982,14 @@ font-family: Georgia, "Noto Sans KR", serif;
   margin-bottom: 14px;
   color: #27121A;
 }
+#notes-editor-list .meeting-editor-item span,
+#documents-editor-list .meeting-editor-item span {
+  font-weight: bold;
+}
+
+#notes-editor-list .meeting-editor-item,
+#documents-editor-list .meeting-editor-item {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+}
