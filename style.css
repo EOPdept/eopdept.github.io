@@ -904,3 +904,11 @@ font-family: Georgia, "Noto Sans KR", serif;
   margin-top: 12px;
   align-self: flex-start;
 }
+#admin-editor h4 {
+  color: #FFFFFF;
+  font-family: Georgia, "Noto Sans KR", serif;
+  font-weight: normal;
+  font-size: 18px;
+  margin-top: 28px;
+  margin-bottom: 14px;
+}
