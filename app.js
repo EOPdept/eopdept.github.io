@@ -195,6 +195,30 @@ function renderMeetingEditor() {
   });
 }
 
+
+document.getElementById("add-meeting-button").addEventListener("click", () => {
+  const dateInput = document.getElementById("meeting-date-input");
+  const titleInput = document.getElementById("meeting-title-input");
+
+  const date = dateInput.value;
+  const title = titleInput.value.trim();
+
+  if (!date || !title) {
+    alert("Please select a date and enter a meeting title.");
+    return;
+  }
+
+  meetings.push({ date, title });
+
+  meetings.sort((a, b) => a.date.localeCompare(b.date));
+
+  dateInput.value = "";
+  titleInput.value = "";
+
+  renderMeetingEditor();
+  renderCalendar();
+});
+
 // Monthly calendar display and navigation
 (() => {
   const grid = document.getElementById("calendar-grid");
