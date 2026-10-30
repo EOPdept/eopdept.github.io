@@ -862,8 +862,8 @@ justify-self: end;
 }
 
 .patrol-table {
-  outline: 1px solid #9B7C83;
-  outline-offset: -1px;
+  outline: 1px solid rgba(155, 124, 131, 0.15);
+outline-offset: -1px;
 }
 
 .patrol-table td {
@@ -877,7 +877,7 @@ font-family: Georgia, "Noto Sans KR", serif;
 
 /* Border between columns 1 and 2 */
 .patrol-table td:first-child {
- border-right: 1px solid #76545D;
+ border-right: 1px solid #85636C;
 }
 
 /* Borders between rows 1–2, 4–5, 5–6, and 8–9 */
@@ -885,7 +885,7 @@ font-family: Georgia, "Noto Sans KR", serif;
 .patrol-table tr:nth-child(4) td,
 .patrol-table tr:nth-child(5) td,
 .patrol-table tr:nth-child(8) td {
-  border-bottom: 1px solid #76545D;
+  border-bottom: 1px solid #85636C;
 }
 
 /* Extra borders in rows 5 and 9 */
@@ -893,7 +893,7 @@ font-family: Georgia, "Noto Sans KR", serif;
 .patrol-table tr:nth-child(5) td:nth-child(3),
 .patrol-table tr:nth-child(9) td:nth-child(2),
 .patrol-table tr:nth-child(9) td:nth-child(3) {
-  border-right: 1px solid #76545D;
+  border-right: 1px solid #85636C;
 }
 .patrol-table td[colspan="3"] {
   background-color: #711B32;
