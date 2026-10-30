@@ -55,8 +55,12 @@ if (!user) {
 
   try {
     console.log("Signed-in user:", user.uid);
-    const memberRef = doc(db, "members", user.uid);
-    const memberSnap = await getDoc(memberRef);
+    console.log("Checking member document...");
+
+const memberRef = doc(db, "members", user.uid);
+const memberSnap = await getDoc(memberRef);
+
+console.log("Member document retrieved:", memberSnap.exists());
 
     if (!memberSnap.exists() || memberSnap.data().approved !== true) {
       await signOut(auth);
