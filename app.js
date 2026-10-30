@@ -394,16 +394,16 @@ document.getElementById("add-document-button").addEventListener("click", async (
   }
 
   try {
-    const parsedUrl = new URL(url);
+  const parsedUrl = new URL(url);
 
-    if (parsedUrl.hostname !== "drive.google.com") {
-      alert("Please enter a valid Google Drive link.");
-      return;
-    }
-  } catch {
-    alert("Please enter a valid Google Drive link.");
+  if (parsedUrl.protocol !== "https:" && parsedUrl.protocol !== "http:") {
+    alert("Please enter a valid web link.");
     return;
   }
+} catch {
+  alert("Please enter a valid web link.");
+  return;
+}
 
   documents.push({ title, url });
 
