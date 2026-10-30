@@ -188,8 +188,7 @@ function renderNotes() {
   editorList.replaceChildren();
 
   if (notes.length === 0) {
-  return;
-}
+    return;
   }
 
   notes.forEach((note, index) => {
@@ -232,8 +231,7 @@ function renderDocuments() {
   editorList.replaceChildren();
 
   if (documents.length === 0) {
-  return;
-}
+    return;
   }
 
   documents.forEach((documentItem, index) => {
