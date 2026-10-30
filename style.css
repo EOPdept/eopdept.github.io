@@ -859,6 +859,12 @@ justify-self: end;
   table-layout: fixed;
   border-collapse: collapse;
   color: #27121A;
+  background: #FFFFFF;
+}
+
+.patrol-table {
+  outline: 1px solid #9B7C83;
+  outline-offset: -1px;
 }
 
 .patrol-table td {
