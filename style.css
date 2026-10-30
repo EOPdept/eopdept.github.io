@@ -900,3 +900,7 @@ font-family: Georgia, "Noto Sans KR", serif;
   background-color: #711B32;
   color: #FFFFFF;
 }
+#logout-button {
+  margin-top: 12px;
+  align-self: flex-start;
+}
