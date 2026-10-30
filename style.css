@@ -872,6 +872,8 @@ justify-self: end;
   padding: 8px 12px;
   border: 1px solid rgba(155, 124, 131, 0.25);
   vertical-align: middle;
+  text-align: center;
+font-family: "Noto Sans KR", sans-serif;
 }
 
 /* Border between columns 1 and 2 */
