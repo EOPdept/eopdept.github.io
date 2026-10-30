@@ -967,3 +967,6 @@ font-family: Georgia, "Noto Sans KR", serif;
   max-width: 100%;
   min-width: 0;
 }
+#meeting-editor-list {
+  margin-top: 12px;
+}
