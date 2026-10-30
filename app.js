@@ -94,8 +94,6 @@ if (role === "admin") {
         document.getElementById("patrol-input").value =
           portalData.patrol || "";
 
-        document.getElementById("calendar-input").value =
-          portalData.calendar || "";
 
         document.getElementById("documents-input").value =
           portalData.documents || "";
