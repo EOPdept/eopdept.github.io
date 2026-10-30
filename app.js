@@ -77,8 +77,6 @@ console.log("Member document retrieved:", memberSnap.exists());
     if (portalSnap.exists()) {
       const portalData = portalSnap.data();
 
-      document.getElementById("patrol-content").textContent =
-        portalData.patrol || "No patrol information added yet.";
 
       document.getElementById("calendar-content").textContent =
         portalData.calendar || "No meeting information added yet.";
@@ -116,9 +114,7 @@ if (role === "admin") {
                   document.getElementById("documents-input").value
               });
 
-              document.getElementById("patrol-content").textContent =
-                document.getElementById("patrol-input").value ||
-                "No patrol information added yet.";
+
 
             
               document.getElementById("documents-content").textContent =
