@@ -214,10 +214,19 @@ function renderNotes() {
     removeButton.type = "button";
     removeButton.textContent = "Remove";
 
-    removeButton.addEventListener("click", () => {
-      notes.splice(index, 1);
-      renderNotes();
-    });
+    removeButton.addEventListener("click", async () => {
+  const removedNote = notes.splice(index, 1)[0];
+
+  try {
+    await updateDoc(portalRef, { notes: notes });
+    renderNotes();
+  } catch (error) {
+    notes.splice(index, 0, removedNote);
+    renderNotes();
+    console.error("Error removing note:", error);
+    alert("Could not remove the note. Please try again.");
+  }
+});
 
     editorItem.appendChild(editorTitle);
     editorItem.appendChild(removeButton);
@@ -257,10 +266,19 @@ function renderDocuments() {
     removeButton.type = "button";
     removeButton.textContent = "Remove";
 
-    removeButton.addEventListener("click", () => {
-      documents.splice(index, 1);
-      renderDocuments();
-    });
+    removeButton.addEventListener("click", async () => {
+  const removedDocument = documents.splice(index, 1)[0];
+
+  try {
+    await updateDoc(portalRef, { documents: documents });
+    renderDocuments();
+  } catch (error) {
+    documents.splice(index, 0, removedDocument);
+    renderDocuments();
+    console.error("Error removing document:", error);
+    alert("Could not remove the document. Please try again.");
+  }
+});
 
     editorItem.appendChild(editorTitle);
     editorItem.appendChild(removeButton);
@@ -350,7 +368,7 @@ try {
 }
 });
 
-document.getElementById("add-note-button").addEventListener("click", () => {
+document.getElementById("add-note-button").addEventListener("click", async () => {
   const titleInput = document.getElementById("note-title-input");
   const contentInput = document.getElementById("note-content-input");
 
@@ -368,8 +386,15 @@ document.getElementById("add-note-button").addEventListener("click", () => {
   contentInput.value = "";
 
   renderNotes();
+
+  try {
+    await updateDoc(portalRef, { notes: notes });
+  } catch (error) {
+    console.error("Error saving notes:", error);
+    alert("Could not save the note. Please try again.");
+  }
 });
-document.getElementById("add-document-button").addEventListener("click", () => {
+document.getElementById("add-document-button").addEventListener("click", async () => {
   const titleInput = document.getElementById("document-title-input");
   const linkInput = document.getElementById("document-link-input");
 
@@ -399,6 +424,15 @@ document.getElementById("add-document-button").addEventListener("click", () => {
   linkInput.value = "";
 
   renderDocuments();
+
+  try {
+    await updateDoc(portalRef, { documents: documents });
+  } catch (error) {
+    documents.pop();
+    renderDocuments();
+    console.error("Error saving documents:", error);
+    alert("Could not save the document. Please try again.");
+  }
 });
 let meetings = [];
 let notes = [];
