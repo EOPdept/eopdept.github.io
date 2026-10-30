@@ -998,6 +998,7 @@ font-family: Georgia, "Noto Sans KR", serif;
 #documents-editor-list .meeting-editor-item {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 #notes-editor-list .meeting-editor-item button,
