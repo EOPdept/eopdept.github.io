@@ -71,6 +71,11 @@ console.log("Member document retrieved:", memberSnap.exists());
 
     const role = memberSnap.data().role;
 
+    document.querySelectorAll(".patrol-table td").forEach((cell) => {
+  cell.contentEditable = role === "admin";
+  cell.setAttribute("spellcheck", "false");
+});
+
     const portalRef = doc(db, "portal", "content");
     const portalSnap = await getDoc(portalRef);
 
