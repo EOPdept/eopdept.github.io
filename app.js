@@ -106,8 +106,7 @@ window.renderCalendar();
 if (role === "admin") {
   document.getElementById("admin-editor").hidden = false;
   renderMeetingEditor();
-        document.getElementById("patrol-input").value =
-          portalData.patrol || "";
+       
 
 
         document.getElementById("documents-input").value =
@@ -133,12 +132,11 @@ if (role === "admin") {
   }
 );
               await updateDoc(portalRef, {
-                patrol:
-                  document.getElementById("patrol-input").value,
-                meetings: meetings,
-                documents:
-                  document.getElementById("documents-input").value
-              });
+  patrolTables: tableData,
+  meetings: meetings,
+  documents:
+    document.getElementById("documents-input").value
+});
 
 
 
