@@ -93,11 +93,12 @@ if (role === "admin") {
 
         document.getElementById("patrol-input").value =
           portalData.patrol || "";
-
+meetings = portalData.meetings || [];
+renderMeetingEditor();
+renderCalendar();
 
         document.getElementById("documents-input").value =
           portalData.documents || "";
-  let meetings = portalData.meetings || [];
 renderMeetingEditor();
 renderCalendar();
                 document.getElementById("save-portal-button").onclick =
@@ -219,6 +220,7 @@ document.getElementById("add-meeting-button").addEventListener("click", () => {
   renderCalendar();
 });
 
+let meetings = [];
 // Monthly calendar display and navigation
 (() => {
   const grid = document.getElementById("calendar-grid");
@@ -302,6 +304,15 @@ document.getElementById("add-meeting-button").addEventListener("click", () => {
         button.classList.add("is-selected");
       }
 
+      const dateString =
+  date.getFullYear() + "-" +
+  String(date.getMonth() + 1).padStart(2, "0") + "-" +
+  String(date.getDate()).padStart(2, "0");
+
+if (meetings.some(meeting => meeting.date === dateString)) {
+  button.classList.add("has-meeting");
+}
+
       button.addEventListener("click", () => {
         selectedDate = date;
         renderCalendar();
@@ -316,8 +327,29 @@ document.getElementById("add-meeting-button").addEventListener("click", () => {
       year: "numeric"
     });
 
-    scheduleList.textContent =
-      "No meetings have been added for this date yet.";
+    
+const selectedDateString =
+  selectedDate.getFullYear() + "-" +
+  String(selectedDate.getMonth() + 1).padStart(2, "0") + "-" +
+  String(selectedDate.getDate()).padStart(2, "0");
+
+const selectedMeetings = meetings.filter(
+  meeting => meeting.date === selectedDateString
+);
+
+scheduleList.replaceChildren();
+
+if (selectedMeetings.length === 0) {
+  scheduleList.textContent =
+    "No meetings have been added for this date yet.";
+} else {
+  selectedMeetings.forEach(meeting => {
+    const item = document.createElement("p");
+    item.textContent = meeting.title;
+    scheduleList.appendChild(item);
+  });
+}
+
   }
 
   prevButton.addEventListener("click", () => {
