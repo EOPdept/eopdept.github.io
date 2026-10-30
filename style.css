@@ -793,24 +793,28 @@ body:has(#dashboard:not([hidden])) .login-container {
   }
 }
 .meeting-editor-item {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 16px 18px;
-  margin-top: 10px;
+  gap: 24px;
+  padding: 18px 20px;
+  margin-top: 12px;
   background: #F8F0EB;
   border: 1px solid #E8DCD5;
   border-radius: 6px;
   color: #27121A;
   font-family: inherit;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .meeting-editor-details {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  align-items: flex-start;
+  gap: 7px;
   min-width: 0;
+  width: 100%;
 }
 
 .meeting-editor-details strong {
@@ -835,6 +839,8 @@ body:has(#dashboard:not([hidden])) .login-container {
   font-size: 12px;
   cursor: pointer;
   flex-shrink: 0;
+  align-self: center;
+justify-self: end;
 }
 
 .meeting-editor-item button:hover {
