@@ -994,3 +994,16 @@ font-family: Georgia, "Noto Sans KR", serif;
   padding-bottom: 8px;
   margin-bottom: 8px;
 }
+#notes-editor-list .meeting-editor-item,
+#documents-editor-list .meeting-editor-item {
+  display: flex;
+  align-items: center;
+}
+
+#notes-editor-list .meeting-editor-item button,
+#documents-editor-list .meeting-editor-item button {
+  padding: 4px 10px;
+  margin: 0;
+  align-self: center;
+  line-height: 1.2;
+}
