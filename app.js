@@ -98,8 +98,13 @@ document.querySelectorAll(".patrol-table").forEach((table, tableIndex) => {
       document.getElementById("calendar-content").textContent =
         portalData.calendar || "No meeting information added yet.";
 
-      document.getElementById("documents-content").textContent =
-        portalData.documents || "No documents added yet.";
+notes = Array.isArray(portalData.notes) ? portalData.notes : [];
+documents = Array.isArray(portalData.documents)
+  ? portalData.documents
+  : [];
+
+renderNotes();
+renderDocuments();
 
       document.getElementById("admin-editor").hidden = role !== "admin";
 
@@ -112,9 +117,7 @@ if (role === "admin") {
        
 
 
-        const documentsInput = document.getElementById("documents-input");
-console.log("Documents input element:", documentsInput);
-documentsInput.value = portalData.documents || "";
+        
                 document.getElementById("save-portal-button").onclick =
           async () => {
             const saveMessage =
@@ -137,17 +140,15 @@ documentsInput.value = portalData.documents || "";
 );
               await updateDoc(portalRef, {
   patrolTables: tableData,
-  meetings: meetings,
-  documents:
-    document.getElementById("documents-input").value
+meetings: meetings,
+notes: notes,
+documents: documents
 });
 
 
 
             
-              document.getElementById("documents-content").textContent =
-                document.getElementById("documents-input").value ||
-                "No documents added yet.";
+              
 
               saveMessage.textContent = "Changes saved successfully.";
             } catch (error) {
@@ -180,6 +181,94 @@ documentsInput.value = portalData.documents || "";
     (error.message || String(error));
 }
 });
+
+function renderNotes() {
+  const list = document.getElementById("notes-list");
+  const editorList = document.getElementById("notes-editor-list");
+
+  list.replaceChildren();
+  editorList.replaceChildren();
+
+  if (notes.length === 0) {
+    list.textContent = "No notes added yet.";
+    editorList.textContent = "No notes added yet.";
+    return;
+  }
+
+  notes.forEach((note, index) => {
+    const item = document.createElement("div");
+
+    const title = document.createElement("h5");
+    title.textContent = note.title;
+
+    const content = document.createElement("p");
+    content.textContent = note.content;
+
+    item.appendChild(title);
+    item.appendChild(content);
+    list.appendChild(item);
+
+    const editorItem = document.createElement("div");
+    const editorTitle = document.createElement("span");
+    editorTitle.textContent = note.title;
+
+    const removeButton = document.createElement("button");
+    removeButton.type = "button";
+    removeButton.textContent = "Remove";
+
+    removeButton.addEventListener("click", () => {
+      notes.splice(index, 1);
+      renderNotes();
+    });
+
+    editorItem.appendChild(editorTitle);
+    editorItem.appendChild(removeButton);
+    editorList.appendChild(editorItem);
+  });
+}
+
+function renderDocuments() {
+  const list = document.getElementById("documents-list");
+  const editorList = document.getElementById("documents-editor-list");
+
+  list.replaceChildren();
+  editorList.replaceChildren();
+
+  if (documents.length === 0) {
+    list.textContent = "No documents uploaded yet.";
+    editorList.textContent = "No documents added yet.";
+    return;
+  }
+
+  documents.forEach((documentItem, index) => {
+    const link = document.createElement("a");
+    link.textContent = documentItem.title;
+    link.href = documentItem.url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+
+    const item = document.createElement("p");
+    item.appendChild(link);
+    list.appendChild(item);
+
+    const editorItem = document.createElement("div");
+    const editorTitle = document.createElement("span");
+    editorTitle.textContent = documentItem.title;
+
+    const removeButton = document.createElement("button");
+    removeButton.type = "button";
+    removeButton.textContent = "Remove";
+
+    removeButton.addEventListener("click", () => {
+      documents.splice(index, 1);
+      renderDocuments();
+    });
+
+    editorItem.appendChild(editorTitle);
+    editorItem.appendChild(removeButton);
+    editorList.appendChild(editorItem);
+  });
+}
 
 function renderMeetingEditor() {
   const list = document.getElementById("meeting-editor-list");
@@ -248,7 +337,59 @@ document.getElementById("add-meeting-button").addEventListener("click", () => {
   window.renderCalendar();
 });
 
+document.getElementById("add-note-button").addEventListener("click", () => {
+  const titleInput = document.getElementById("note-title-input");
+  const contentInput = document.getElementById("note-content-input");
+
+  const title = titleInput.value.trim();
+  const content = contentInput.value.trim();
+
+  if (!title || !content) {
+    alert("Please enter both a note title and its content.");
+    return;
+  }
+
+  notes.push({ title, content });
+
+  titleInput.value = "";
+  contentInput.value = "";
+
+  renderNotes();
+});
+document.getElementById("add-document-button").addEventListener("click", () => {
+  const titleInput = document.getElementById("document-title-input");
+  const linkInput = document.getElementById("document-link-input");
+
+  const title = titleInput.value.trim();
+  const url = linkInput.value.trim();
+
+  if (!title || !url) {
+    alert("Please enter both a document title and a Google Drive link.");
+    return;
+  }
+
+  try {
+    const parsedUrl = new URL(url);
+
+    if (parsedUrl.hostname !== "drive.google.com") {
+      alert("Please enter a valid Google Drive link.");
+      return;
+    }
+  } catch {
+    alert("Please enter a valid Google Drive link.");
+    return;
+  }
+
+  documents.push({ title, url });
+
+  titleInput.value = "";
+  linkInput.value = "";
+
+  renderDocuments();
+});
 let meetings = [];
+let notes = [];
+let documents = [];
 
 // Monthly calendar display and navigation
 (() => {
