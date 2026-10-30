@@ -35,8 +35,9 @@ loginForm.addEventListener("submit", async (event) => {
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value;
 
-  loginMessage.textContent = "Signing in...";
-
+loginMessage.textContent = "Signing in...";
+loginMessage.style.color = "#711B32";
+  
   try {
     await signInWithEmailAndPassword(auth, email, password);
   } catch (error) {
