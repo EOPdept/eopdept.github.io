@@ -864,7 +864,7 @@ justify-self: end;
 .patrol-table td {
   height: 48px;
   padding: 8px 12px;
-  border: none;
+  border: 1px solid rgba(155, 124, 131, 0.25);
   vertical-align: middle;
 }
 
