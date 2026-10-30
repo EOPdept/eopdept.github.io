@@ -183,7 +183,6 @@ documents: documents
 function renderNotes() {
   const list = document.getElementById("notes-list");
   const editorList = document.getElementById("notes-editor-list");
-  editorItem.className = "meeting-editor-item";
 
   list.replaceChildren();
   editorList.replaceChildren();
@@ -206,6 +205,8 @@ function renderNotes() {
     list.appendChild(item);
 
     const editorItem = document.createElement("div");
+    editorItem.className = "meeting-editor-item";
+
     const editorTitle = document.createElement("span");
     editorTitle.textContent = note.title;
 
