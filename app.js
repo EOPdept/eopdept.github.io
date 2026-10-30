@@ -88,14 +88,17 @@ console.log("Member document retrieved:", memberSnap.exists());
 
       document.getElementById("admin-editor").hidden = role !== "admin";
 
+meetings = portalData.meetings || [];
+renderMeetingEditor();
+window.renderCalendar();
+      
 if (role === "admin") {
         document.getElementById("admin-editor").hidden = false;
+  renderMeetingEditor();
 
         document.getElementById("patrol-input").value =
           portalData.patrol || "";
-meetings = portalData.meetings || [];
-renderMeetingEditor();
-renderCalendar();
+
 
         document.getElementById("documents-input").value =
           portalData.documents || "";
@@ -112,8 +115,7 @@ renderCalendar();
               await updateDoc(portalRef, {
                 patrol:
                   document.getElementById("patrol-input").value,
-                calendar:
-                  document.getElementById("calendar-input").value,
+                meetings: meetings,
                 documents:
                   document.getElementById("documents-input").value
               });
@@ -122,10 +124,7 @@ renderCalendar();
                 document.getElementById("patrol-input").value ||
                 "No patrol information added yet.";
 
-              document.getElementById("calendar-content").textContent =
-                document.getElementById("calendar-input").value ||
-                "No meeting information added yet.";
-
+            
               document.getElementById("documents-content").textContent =
                 document.getElementById("documents-input").value ||
                 "No documents added yet.";
@@ -249,6 +248,8 @@ let meetings = [];
 
   let selectedDate = new Date();
 
+  window.renderCalendar = function() {
+    
   function renderCalendar() {
     const year = displayedMonth.getFullYear();
     const month = displayedMonth.getMonth();
@@ -350,7 +351,7 @@ if (selectedMeetings.length === 0) {
   });
 }
 
-  }
+  };
 
   prevButton.addEventListener("click", () => {
     displayedMonth = new Date(
@@ -359,7 +360,7 @@ if (selectedMeetings.length === 0) {
       1
     );
     selectedDate = new Date(displayedMonth);
-    renderCalendar();
+    window.renderCalendar();
   });
 
   nextButton.addEventListener("click", () => {
