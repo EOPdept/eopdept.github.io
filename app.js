@@ -82,7 +82,16 @@ console.log("Member document retrieved:", memberSnap.exists());
     if (portalSnap.exists()) {
       const portalData = portalSnap.data();
 
+const savedTables = portalData.patrolTables || [];
 
+document.querySelectorAll(".patrol-table").forEach((table, tableIndex) => {
+  const savedCells = savedTables[tableIndex] || {};
+
+  table.querySelectorAll("td[data-cell]").forEach((cell) => {
+    const cellId = cell.dataset.cell;
+    cell.textContent = savedCells[cellId] || "";
+  });
+});
       document.getElementById("calendar-content").textContent =
         portalData.calendar || "No meeting information added yet.";
 
@@ -111,6 +120,18 @@ if (role === "admin") {
             saveMessage.textContent = "Saving...";
 
             try {
+              const tableData = Array.from(
+  document.querySelectorAll(".patrol-table"),
+  (table) => {
+    const cells = {};
+
+    table.querySelectorAll("td[data-cell]").forEach((cell) => {
+      cells[cell.dataset.cell] = cell.textContent.trim();
+    });
+
+    return cells;
+  }
+);
               await updateDoc(portalRef, {
                 patrol:
                   document.getElementById("patrol-input").value,
