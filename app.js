@@ -255,8 +255,9 @@ function renderNotes() {
       notes.splice(event.newIndex, 0, movedNote);
 
       try {
-        await updateDoc(portalRef, { notes: notes });
-      } catch (error) {
+  await updateDoc(portalRef, { notes: notes });
+  renderNotes();
+} catch (error) {
         notes.splice(0, notes.length, ...previousNotes);
         renderNotes();
         alert("Could not reorder notes. Please try again.");
