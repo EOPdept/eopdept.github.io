@@ -934,3 +934,12 @@ font-family: Georgia, "Noto Sans KR", serif;
   background: #FFFFFF;
   color: #711B32;
 }
+.portal-index {
+  display: flex;
+  flex-direction: column;
+}
+
+#logout-button {
+  align-self: center;
+  margin-top: auto;
+}
