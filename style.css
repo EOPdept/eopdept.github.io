@@ -1070,7 +1070,9 @@ flex-shrink: 0;
   }
 }
 @media (max-width: 600px) {
-  .patrol-table td:first-child {
+  .patrol-table tr:nth-child(1) td:first-child,
+  .patrol-table tr:nth-child(3) td:first-child,
+  .patrol-table tr:nth-child(7) td:first-child {
     font-size: 12px;
   }
 }
