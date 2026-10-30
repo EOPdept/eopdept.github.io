@@ -1069,3 +1069,8 @@ flex-shrink: 0;
     width: 32%;
   }
 }
+@media (max-width: 600px) {
+  .patrol-table td:first-child {
+    font-size: 12px;
+  }
+}
