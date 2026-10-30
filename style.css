@@ -792,3 +792,39 @@ body:has(#dashboard:not([hidden])) .login-container {
     gap: 14px;
   }
 }
+.meeting-editor-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 16px;
+  margin-top: 10px;
+  background: #F8F0EB;
+  border: 1px solid #E8DCD5;
+  border-radius: 6px;
+  color: #27121A;
+  font-family: inherit;
+}
+
+.meeting-editor-item span {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #27121A;
+}
+
+.meeting-editor-item button {
+  background: transparent;
+  color: #711B32;
+  border: 1px solid #711B32;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.meeting-editor-item button:hover {
+  background: #711B32;
+  color: #FDF8F3;
+}
