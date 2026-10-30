@@ -1051,7 +1051,8 @@ flex-shrink: 0;
   opacity: 0.35;
   cursor: default;
 }
-.notes-drag-handle {
+.notes-drag-handle,
+.documents-drag-handle {
   cursor: grab;
   font-size: 22px;
   color: #711B32;
