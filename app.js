@@ -97,6 +97,9 @@ if (role === "admin") {
 
         document.getElementById("documents-input").value =
           portalData.documents || "";
+  let meetings = portalData.meetings || [];
+renderMeetingEditor();
+renderCalendar();
                 document.getElementById("save-portal-button").onclick =
           async () => {
             const saveMessage =
@@ -157,6 +160,41 @@ if (role === "admin") {
     (error.message || String(error));
 }
 });
+
+function renderMeetingEditor() {
+  const list = document.getElementById("meeting-editor-list");
+  if (!list) return;
+
+  list.replaceChildren();
+
+  if (meetings.length === 0) {
+    list.textContent = "No meetings added yet.";
+    return;
+  }
+
+  meetings.forEach((meeting, index) => {
+    const item = document.createElement("div");
+    item.className = "meeting-editor-item";
+
+    const details = document.createElement("span");
+    details.textContent = meeting.date + " — " + meeting.title;
+
+    const removeButton = document.createElement("button");
+    removeButton.type = "button";
+    removeButton.textContent = "Remove";
+
+    removeButton.addEventListener("click", () => {
+      meetings.splice(index, 1);
+      renderMeetingEditor();
+      renderCalendar();
+    });
+
+    item.appendChild(details);
+    item.appendChild(removeButton);
+    list.appendChild(item);
+  });
+}
+
 // Monthly calendar display and navigation
 (() => {
   const grid = document.getElementById("calendar-grid");
