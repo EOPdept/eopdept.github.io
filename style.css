@@ -847,3 +847,44 @@ justify-self: end;
   background: #711B32;
   color: #FDF8F3;
 }
+.patrol-tables {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: 100%;
+}
+
+.patrol-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  color: #27121A;
+}
+
+.patrol-table td {
+  height: 48px;
+  padding: 8px 12px;
+  border: none;
+  vertical-align: middle;
+}
+
+/* Border between columns 1 and 2 */
+.patrol-table td:first-child {
+  border-right: 1px solid #9B7C83;
+}
+
+/* Borders between rows 1–2, 4–5, 5–6, and 8–9 */
+.patrol-table tr:nth-child(1) td,
+.patrol-table tr:nth-child(4) td,
+.patrol-table tr:nth-child(5) td,
+.patrol-table tr:nth-child(8) td {
+  border-bottom: 1px solid #9B7C83;
+}
+
+/* Extra borders in rows 5 and 9 */
+.patrol-table tr:nth-child(5) td:nth-child(2),
+.patrol-table tr:nth-child(5) td:nth-child(3),
+.patrol-table tr:nth-child(9) td:nth-child(2),
+.patrol-table tr:nth-child(9) td:nth-child(3) {
+  border-right: 1px solid #9B7C83;
+}
