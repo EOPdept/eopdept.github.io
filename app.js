@@ -188,9 +188,8 @@ function renderNotes() {
   editorList.replaceChildren();
 
   if (notes.length === 0) {
-    list.textContent = "No notes added yet.";
-    editorList.textContent = "No notes added yet.";
-    return;
+  return;
+}
   }
 
   notes.forEach((note, index) => {
@@ -233,9 +232,8 @@ function renderDocuments() {
   editorList.replaceChildren();
 
   if (documents.length === 0) {
-    list.textContent = "No documents uploaded yet.";
-    editorList.textContent = "No documents added yet.";
-    return;
+  return;
+}
   }
 
   documents.forEach((documentItem, index) => {
