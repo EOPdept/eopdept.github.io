@@ -79,7 +79,7 @@ console.log("Member document retrieved:", memberSnap.exists());
   cell.setAttribute("spellcheck", "false");
 });
 
-    const portalRef = doc(db, "portal", "content");
+    portalRef = doc(db, "portal", "content");
     const portalSnap = await getDoc(portalRef);
 
     if (portalSnap.exists()) {
@@ -299,11 +299,19 @@ details.appendChild(date);
     removeButton.type = "button";
     removeButton.textContent = "Remove";
 
-    removeButton.addEventListener("click", () => {
-      meetings.splice(index, 1);
-      renderMeetingEditor();
-      window.renderCalendar();
-    });
+    removeButton.addEventListener("click", async () => {
+  meetings.splice(index, 1);
+
+  renderMeetingEditor();
+  window.renderCalendar();
+
+  try {
+    await updateDoc(portalRef, { meetings: meetings });
+  } catch (error) {
+    console.error("Error removing meeting:", error);
+    alert("Could not save meeting removal. Please try again.");
+  }
+});
 
     item.appendChild(details);
     item.appendChild(removeButton);
@@ -312,7 +320,7 @@ details.appendChild(date);
 }
 
 
-document.getElementById("add-meeting-button").addEventListener("click", () => {
+document.getElementById("add-meeting-button").addEventListener("click", async () => {
   const dateInput = document.getElementById("meeting-date-input");
   const titleInput = document.getElementById("meeting-title-input");
 
@@ -326,13 +334,20 @@ document.getElementById("add-meeting-button").addEventListener("click", () => {
 
   meetings.push({ date, title });
 
-  meetings.sort((a, b) => a.date.localeCompare(b.date));
+meetings.sort((a, b) => a.date.localeCompare(b.date));
 
-  dateInput.value = "";
-  titleInput.value = "";
+dateInput.value = "";
+titleInput.value = "";
 
-  renderMeetingEditor();
-  window.renderCalendar();
+renderMeetingEditor();
+window.renderCalendar();
+
+try {
+  await updateDoc(portalRef, { meetings: meetings });
+} catch (error) {
+  console.error("Error saving meeting:", error);
+  alert("Could not save meeting. Please try again.");
+}
 });
 
 document.getElementById("add-note-button").addEventListener("click", () => {
@@ -388,6 +403,7 @@ document.getElementById("add-document-button").addEventListener("click", () => {
 let meetings = [];
 let notes = [];
 let documents = [];
+let portalRef = null;
 
 // Monthly calendar display and navigation
 (() => {
