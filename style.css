@@ -970,3 +970,6 @@ font-family: Georgia, "Noto Sans KR", serif;
 #meeting-editor-list {
   margin-top: 12px;
 }
+#add-meeting-button {
+  margin-bottom: 28px;
+}
