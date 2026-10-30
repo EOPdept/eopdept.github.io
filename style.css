@@ -973,3 +973,12 @@ font-family: Georgia, "Noto Sans KR", serif;
 #add-meeting-button {
   margin-bottom: 28px;
 }
+#notes-list > div,
+#documents-list > div {
+  background: transparent;
+  border: 1px solid #711B32;
+  border-radius: 14px;
+  padding: 16px 20px;
+  margin-bottom: 14px;
+  color: #27121A;
+}
