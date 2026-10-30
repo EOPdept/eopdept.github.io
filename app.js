@@ -95,9 +95,7 @@ document.querySelectorAll(".patrol-table").forEach((table, tableIndex) => {
     cell.textContent = savedCells[cellId] || "";
   });
 });
-      document.getElementById("calendar-content").textContent =
-        portalData.calendar || "No meeting information added yet.";
-
+   
 notes = Array.isArray(portalData.notes) ? portalData.notes : [];
 documents = Array.isArray(portalData.documents)
   ? portalData.documents
