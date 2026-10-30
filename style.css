@@ -1011,3 +1011,17 @@ flex-shrink: 0;
   padding: 10px 6px;
   font-size: 14px;
 }
+@media (max-width: 600px) {
+  .login-container {
+    padding: 20px;
+  }
+
+  .login-panel {
+    max-width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  #meeting-date-input {
+    width: 95%;
+  }
+}
