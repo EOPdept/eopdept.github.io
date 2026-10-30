@@ -1071,6 +1071,6 @@ flex-shrink: 0;
 }
 @media (max-width: 600px) {
   .patrol-table td {
-    font-size: 12px;
+    font-size: 13px;
   }
 }
