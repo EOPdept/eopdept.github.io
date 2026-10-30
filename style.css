@@ -927,12 +927,25 @@ font-family: Georgia, "Noto Sans KR", serif;
   cursor: pointer;
 }
 
+#add-meeting-button,
+#add-note-button,
+#add-document-button {
+  background: transparent;
+  color: #FFFFFF;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 0;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  padding: 7px 4px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
 #add-meeting-button:hover,
 #add-note-button:hover,
-#add-document-button:hover,
-#save-portal-button:hover {
-  background: #FFFFFF;
-  color: #711B32;
+#add-document-button:hover {
+  background: rgba(255, 255, 255, 0.08);
 }
 .portal-index {
   display: flex;
