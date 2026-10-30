@@ -149,10 +149,12 @@ if (role === "admin") {
     document.getElementById("logout-button").onclick = async () => {
       await signOut(auth);
     };
-  } catch (error) {
+} catch (error) {
+    console.error("Access verification error:", error);
+
     loginMessage.textContent =
       "Could not verify your access. Please try again.";
-  }
+}
 });
 // Monthly calendar display and navigation
 (() => {
