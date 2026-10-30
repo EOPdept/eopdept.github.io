@@ -956,3 +956,9 @@ font-family: Georgia, "Noto Sans KR", serif;
   align-self: center;
   margin-top: auto;
 }
+#meeting-date-input {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
