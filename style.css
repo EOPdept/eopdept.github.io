@@ -930,16 +930,20 @@ font-family: Georgia, "Noto Sans KR", serif;
 #add-meeting-button,
 #add-note-button,
 #add-document-button {
+  display: block;
+  width: fit-content;
+  min-width: 130px;
+  margin: 14px auto;
+  padding: 9px 18px;
+
   background: transparent;
   color: #FFFFFF;
-  border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.55);
-  border-radius: 0;
+  border: 1px solid #FFFFFF;
+  border-radius: 14px;
+
   font-family: Arial, sans-serif;
   font-size: 14px;
-  padding: 7px 4px;
   cursor: pointer;
-  transition: background 0.2s ease;
 }
 
 #add-meeting-button:hover,
@@ -947,6 +951,7 @@ font-family: Georgia, "Noto Sans KR", serif;
 #add-document-button:hover {
   background: rgba(255, 255, 255, 0.08);
 }
+
 .portal-index {
   display: flex;
   flex-direction: column;
