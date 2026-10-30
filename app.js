@@ -89,10 +89,10 @@ console.log("Member document retrieved:", memberSnap.exists());
       document.getElementById("admin-editor").hidden = role !== "admin";
 
 meetings = portalData.meetings || [];
-renderMeetingEditor();
 window.renderCalendar();
-      
+
 if (role === "admin") {
+  renderMeetingEditor();
         document.getElementById("admin-editor").hidden = false;
   renderMeetingEditor();
 
