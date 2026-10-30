@@ -1074,14 +1074,12 @@ flex-shrink: 0;
     font-size: 13px;
   }
 }
-.loading-message {
-  position: fixed;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin: 0;
-  text-align: center;
-}
+
 .patrol-table td[colspan="3"] {
   font-size: 14pt;
+}
+#loading-message {
+  text-align: center;
+  margin-top: 0;
+  padding-top: 35vh;
 }
