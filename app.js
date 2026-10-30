@@ -228,7 +228,6 @@ function renderNotes() {
 function renderDocuments() {
   const list = document.getElementById("documents-list");
   const editorList = document.getElementById("documents-editor-list");
-  editorItem.className = "meeting-editor-item";
 
   list.replaceChildren();
   editorList.replaceChildren();
@@ -244,11 +243,13 @@ function renderDocuments() {
     link.target = "_blank";
     link.rel = "noopener noreferrer";
 
-    const item = document.createElement("p");
+    const item = document.createElement("div");
     item.appendChild(link);
     list.appendChild(item);
 
     const editorItem = document.createElement("div");
+    editorItem.className = "meeting-editor-item";
+
     const editorTitle = document.createElement("span");
     editorTitle.textContent = documentItem.title;
 
