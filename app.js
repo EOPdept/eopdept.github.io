@@ -197,26 +197,72 @@ function renderNotes() {
     const editorTitle = document.createElement("span");
     editorTitle.textContent = note.title;
 
+    const actions = document.createElement("div");
+    actions.className = "notes-editor-actions";
+
+    const upButton = document.createElement("button");
+    upButton.type = "button";
+    upButton.textContent = "↑";
+    upButton.disabled = index === 0;
+
+    upButton.addEventListener("click", async () => {
+      [notes[index - 1], notes[index]] =
+        [notes[index], notes[index - 1]];
+
+      try {
+        await updateDoc(portalRef, { notes: notes });
+        renderNotes();
+      } catch (error) {
+        [notes[index - 1], notes[index]] =
+          [notes[index], notes[index - 1]];
+        renderNotes();
+        alert("Could not reorder notes. Please try again.");
+      }
+    });
+
+    const downButton = document.createElement("button");
+    downButton.type = "button";
+    downButton.textContent = "↓";
+    downButton.disabled = index === notes.length - 1;
+
+    downButton.addEventListener("click", async () => {
+      [notes[index], notes[index + 1]] =
+        [notes[index + 1], notes[index]];
+
+      try {
+        await updateDoc(portalRef, { notes: notes });
+        renderNotes();
+      } catch (error) {
+        [notes[index], notes[index + 1]] =
+          [notes[index + 1], notes[index]];
+        renderNotes();
+        alert("Could not reorder notes. Please try again.");
+      }
+    });
+
     const removeButton = document.createElement("button");
     removeButton.type = "button";
     removeButton.textContent = "Remove";
 
     removeButton.addEventListener("click", async () => {
-  const removedNote = notes.splice(index, 1)[0];
+      const removedNote = notes.splice(index, 1)[0];
 
-  try {
-    await updateDoc(portalRef, { notes: notes });
-    renderNotes();
-  } catch (error) {
-    notes.splice(index, 0, removedNote);
-    renderNotes();
-    console.error("Error removing note:", error);
-    alert("Could not remove the note. Please try again.");
-  }
-});
+      try {
+        await updateDoc(portalRef, { notes: notes });
+        renderNotes();
+      } catch (error) {
+        notes.splice(index, 0, removedNote);
+        renderNotes();
+        alert("Could not remove the note. Please try again.");
+      }
+    });
+
+    actions.appendChild(upButton);
+    actions.appendChild(downButton);
+    actions.appendChild(removeButton);
 
     editorItem.appendChild(editorTitle);
-    editorItem.appendChild(removeButton);
+    editorItem.appendChild(actions);
     editorList.appendChild(editorItem);
   });
 }
