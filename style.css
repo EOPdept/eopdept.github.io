@@ -1083,3 +1083,31 @@ flex-shrink: 0;
   margin-top: 0;
   padding-top: 35vh;
 }
+#loading-screen {
+  width: 100%;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transform: translateY(-35px);
+}
+
+.loading-monogram {
+  font-family: Georgia, serif;
+  font-size: 32px;
+  font-weight: bold;
+  letter-spacing: 5px;
+  color: #711B32;
+}
+
+#loading-message {
+  margin: 0;
+  font-family: Georgia, serif;
+  font-size: 15px;
+  color: #27121A;
+}
+#loading-screen[hidden] {
+  display: none;
+}
