@@ -51,10 +51,10 @@ loginMessage.style.color = "#711B32";
 
 onAuthStateChanged(auth, async (user) => {
     document.getElementById("loading-screen").hidden = false;
-    document.getElementById("login-form").hidden = true;
+    document.querySelector(".login-panel").hidden = true;
   document.getElementById("dashboard").hidden = true;
 if (!user) {
-  document.getElementById("login-form").hidden = false;
+  document.querySelector(".login-panel").hidden = false;
   document.getElementById("loading-screen").hidden = true;
   document.getElementById("dashboard").hidden = true;
   loginMessage.textContent = "";
