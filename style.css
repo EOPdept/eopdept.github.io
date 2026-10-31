@@ -1013,7 +1013,7 @@ flex-shrink: 0;
 }
 @media (max-width: 600px) {
   .login-container {
-    padding: 20px;
+    padding: 20px 28px;
   }
 
   .login-panel {
@@ -1075,20 +1075,12 @@ flex-shrink: 0;
   }
 }
 
-.patrol-table td[colspan="3"] {
-  font-size: 13pt;
-}
-#loading-message {
-  text-align: center;
-  margin-top: 0;
-  padding-top: 35vh;
-}
+
 #loading-screen {
   min-height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translateY(-25px);
 }
 
 #loading-screen[hidden] {
@@ -1098,6 +1090,6 @@ flex-shrink: 0;
 #loading-message {
   margin: 0;
   font-family: Georgia, serif;
-  font-size: 16px;
+  font-size: 20px;
   color: #27121A;
 }
