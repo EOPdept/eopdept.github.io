@@ -1084,30 +1084,20 @@ flex-shrink: 0;
   padding-top: 35vh;
 }
 #loading-screen {
-  width: 100%;
   min-height: 70vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  transform: translateY(-35px);
+  transform: translateY(-25px);
 }
 
-.loading-monogram {
-  font-family: Georgia, serif;
-  font-size: 32px;
-  font-weight: bold;
-  letter-spacing: 5px;
-  color: #711B32;
+#loading-screen[hidden] {
+  display: none;
 }
 
 #loading-message {
   margin: 0;
   font-family: Georgia, serif;
-  font-size: 15px;
+  font-size: 16px;
   color: #27121A;
-}
-#loading-screen[hidden] {
-  display: none;
 }
